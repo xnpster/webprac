@@ -1,0 +1,280 @@
+.add-client-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.add-client-container01 {
+  flex: 0 0 auto;
+  width: 70%;
+  height: auto;
+  display: flex;
+  align-self: center;
+  margin-top: var(--dl-space-space-fiveunits);
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.add-client-text {
+  align-self: center;
+  margin-top: 0px;
+  font-family: Comic Sans MS;
+  margin-left: 0px;
+}
+.add-client-container02 {
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: var(--dl-space-space-oneandhalfunits);
+  align-items: center;
+  padding-top: var(--dl-space-space-halfunit);
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  padding-left: var(--dl-space-space-unit);
+  padding-right: var(--dl-space-space-unit);
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-twounits);
+  justify-content: flex-start;
+}
+.add-client-container03 {
+  gap: var(--dl-space-space-halfunit);
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: center;
+  margin-left: var(--dl-space-space-oneandhalfunits);
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.add-client-text03 {
+  font-size: 30px;
+  font-family: Comic Sans MS;
+  margin-left: var(--dl-space-space-halfunit);
+}
+.add-client-container04 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: flex-start;
+  margin-left: 0px;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.add-client-radiobutton {
+  align-self: center;
+  margin-top: 0px;
+  margin-left: 4px;
+  padding-top: 0px;
+  padding-left: 0px;
+}
+.add-client-text04 {
+  font-size: 30px;
+  font-family: Comic Sans MS;
+  margin-left: 4px;
+}
+.add-client-container05 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: flex-start;
+  margin-left: 0px;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.add-client-radiobutton1 {
+  align-self: center;
+  margin-top: 0px;
+  margin-left: 4px;
+  padding-top: 0px;
+  padding-left: 0px;
+}
+.add-client-text05 {
+  font-size: 30px;
+  font-family: Comic Sans MS;
+  margin-left: 4px;
+}
+.add-client-container06 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: var(--dl-space-space-halfunit);
+  align-items: center;
+  margin-left: var(--dl-space-space-twounits);
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.add-client-text06 {
+  font-size: 30px;
+  font-family: Comic Sans MS;
+  margin-left: var(--dl-space-space-halfunit);
+}
+.add-client-textinput {
+  width: 329px;
+  height: 70%;
+  text-align: center;
+  font-family: Arial;
+  margin-left: var(--dl-space-space-halfunit);
+  padding-top: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 2px;
+}
+.add-client-container07 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: var(--dl-space-space-halfunit);
+  align-items: center;
+  margin-left: var(--dl-space-space-twounits);
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.add-client-text07 {
+  font-size: 30px;
+  font-family: Comic Sans MS;
+  margin-left: var(--dl-space-space-halfunit);
+}
+.add-client-textinput1 {
+  width: 329px;
+  height: 70%;
+  text-align: center;
+  font-family: Arial;
+  margin-left: var(--dl-space-space-halfunit);
+  padding-top: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 2px;
+}
+.add-client-container08 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: var(--dl-space-space-halfunit);
+  align-items: center;
+  margin-left: var(--dl-space-space-twounits);
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.add-client-text08 {
+  font-size: 30px;
+  font-family: Comic Sans MS;
+  margin-left: var(--dl-space-space-halfunit);
+}
+.add-client-textinput2 {
+  width: 329px;
+  height: 70%;
+  text-align: center;
+  font-family: Arial;
+  margin-left: var(--dl-space-space-halfunit);
+  padding-top: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 2px;
+}
+.add-client-container09 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: center;
+  margin-left: var(--dl-space-space-twounits);
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.add-client-text09 {
+  font-size: 30px;
+  font-family: Comic Sans MS;
+  margin-left: var(--dl-space-space-halfunit);
+}
+.add-client-textinput3 {
+  width: 329px;
+  height: 70%;
+  text-align: center;
+  font-family: Arial;
+  margin-left: var(--dl-space-space-halfunit);
+  padding-top: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 2px;
+}
+.add-client-container10 {
+  gap: var(--dl-space-space-oneandhalfunits);
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  padding-top: var(--dl-space-space-unit);
+  justify-content: center;
+}
+.add-client-form {
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.add-client-button {
+  color: rgb(0, 0, 0);
+  width: var(--dl-size-size-large);
+  height: auto;
+  padding: 4px;
+  font-size: 16px;
+  align-self: center;
+  margin-top: 0px;
+  text-align: center;
+  transition: 0.3s;
+  font-family: Comic Sans MS;
+  border-radius: 20px;
+  background-color: #cacaca;
+}
+.add-client-button:hover {
+  background-color: rgba(0, 62, 179, 0.43);
+}
+.add-client-button:active {
+  border-radius: 20px;
+  background-color: var(--dl-color-primary-300);
+}
+.add-client-form1 {
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.add-client-button1 {
+  color: rgb(0, 0, 0);
+  width: var(--dl-size-size-large);
+  height: auto;
+  padding: 4px;
+  font-size: 16px;
+  align-self: center;
+  margin-top: 0px;
+  text-align: center;
+  transition: 0.3s;
+  font-family: Comic Sans MS;
+  border-radius: 20px;
+  background-color: #cacaca;
+}
+.add-client-button1:hover {
+  background-color: rgba(0, 62, 179, 0.43);
+}
+.add-client-button1:active {
+  border-radius: 20px;
+  background-color: var(--dl-color-primary-300);
+}

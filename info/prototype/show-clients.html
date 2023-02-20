@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>show-clients - Growing Attached Coyote</title>
+    <meta
+      property="og:title"
+      content="show-clients - Growing Attached Coyote"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <!--This is the head section-->
+    <!-- <style> ... </style> -->
+    <style data-section-id="dropdown">
+      [data-thq="thq-dropdown"]:hover > [data-thq="thq-dropdown-list"] {
+          display: flex;
+        }
+
+        [data-thq="thq-dropdown"]:hover > div [data-thq="thq-dropdown-arrow"] {
+          transform: rotate(90deg);
+        }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div>
+      <link href="./show-clients.css" rel="stylesheet" />
+
+      <div class="show-clients-container">
+        <h1 class="show-clients-text">
+          <span>Клиенты:</span>
+          <br />
+        </h1>
+        <div class="show-clients-container001">
+          <div class="show-clients-container002">
+            <h2 class="show-clients-text003">
+              <span>Вид:</span>
+              <br />
+            </h2>
+            <div class="show-clients-container003">
+              <input
+                type="radio"
+                id="all"
+                name="cli-type"
+                checked=""
+                autocomplete="on"
+                class="show-clients-radiobutton"
+              />
+              <label for="all" class="show-clients-text006">Все</label>
+            </div>
+            <div class="show-clients-container004">
+              <input
+                type="radio"
+                id="phy"
+                name="cli-type"
+                autocomplete="on"
+                class="show-clients-radiobutton1"
+              />
+              <label for="phy" class="show-clients-text007">Физ. лицо</label>
+            </div>
+            <div class="show-clients-container005">
+              <input
+                type="radio"
+                id="uri"
+                name="cli-type"
+                autocomplete="on"
+                class="show-clients-radiobutton2"
+              />
+              <label for="uri" class="show-clients-text008">Юр. лицо</label>
+            </div>
+          </div>
+          <div class="show-clients-container006">
+            <div class="show-clients-container007">
+              <input type="checkbox" class="show-clients-checkbox" />
+              <span class="show-clients-text009">Виды счетов</span>
+            </div>
+            <div
+              style="overflow-y: scroll; height:400px;"
+              class="show-clients-container008"
+            >
+              <div class="show-clients-container009">
+                <input type="checkbox" class="show-clients-checkbox01" />
+                <span class="show-clients-text010">Вид счёта 1</span>
+              </div>
+              <div class="show-clients-container010">
+                <input type="checkbox" class="show-clients-checkbox02" />
+                <span class="show-clients-text011">Вид счёта 1</span>
+              </div>
+              <div class="show-clients-container011">
+                <input type="checkbox" class="show-clients-checkbox03" />
+                <span class="show-clients-text012">Вид счёта 1</span>
+              </div>
+              <div class="show-clients-container012">
+                <input type="checkbox" class="show-clients-checkbox04" />
+                <span class="show-clients-text013">Вид счёта 1</span>
+              </div>
+              <div class="show-clients-container013">
+                <input type="checkbox" class="show-clients-checkbox05" />
+                <span class="show-clients-text014">Вид счёта 1</span>
+              </div>
+              <div class="show-clients-container014">
+                <input type="checkbox" class="show-clients-checkbox06" />
+                <span class="show-clients-text015">Вид счёта 1</span>
+              </div>
+              <div class="show-clients-container015">
+                <input type="checkbox" class="show-clients-checkbox07" />
+                <span class="show-clients-text016">Вид счёта 1</span>
+              </div>
+              <div class="show-clients-container016">
+                <input type="checkbox" class="show-clients-checkbox08" />
+                <span class="show-clients-text017">Вид счёта 1</span>
+              </div>
+              <div class="show-clients-container017">
+                <input type="checkbox" class="show-clients-checkbox09" />
+                <span class="show-clients-text018">Вид счёта 1</span>
+              </div>
+              <div class="show-clients-container018">
+                <input type="checkbox" class="show-clients-checkbox10" />
+                <span class="show-clients-text019">Вид счёта 1</span>
+              </div>
+              <div class="show-clients-container019">
+                <input type="checkbox" class="show-clients-checkbox11" />
+                <span class="show-clients-text020">Вид счёта 1</span>
+              </div>
+            </div>
+          </div>
+          <div class="show-clients-container020">
+            <form action="add-client.html" class="show-clients-form">
+              <button class="show-clients-button button">+</button>
+            </form>
+          </div>
+        </div>
+        <div
+          data-thq="thq-dropdown"
+          class="show-clients-thq-dropdown list-item"
+        >
+          <ul data-thq="thq-dropdown-list" class="show-clients-dropdown-list">
+            <li data-thq="thq-dropdown" class="show-clients-dropdown list-item">
+              <div
+                data-thq="thq-dropdown-toggle"
+                class="show-clients-dropdown-toggle"
+              >
+                <span class="show-clients-text021">Sub-menu Item</span>
+              </div>
+            </li>
+            <li
+              data-thq="thq-dropdown"
+              class="show-clients-dropdown1 list-item"
+            >
+              <div
+                data-thq="thq-dropdown-toggle"
+                class="show-clients-dropdown-toggle1"
+              >
+                <span class="show-clients-text022">Sub-menu Item</span>
+              </div>
+            </li>
+            <li
+              data-thq="thq-dropdown"
+              class="show-clients-dropdown2 list-item"
+            >
+              <div
+                data-thq="thq-dropdown-toggle"
+                class="show-clients-dropdown-toggle2"
+              >
+                <span class="show-clients-text023">Sub-menu Item</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="show-clients-container021">
+          <div class="show-clients-container022">
+            <div class="show-clients-container023">
+              <input type="checkbox" class="show-clients-checkbox12" />
+              <span class="show-clients-text024">
+                Имеют хотя бы один активный счёт в период с
+              </span>
+              <input
+                type="text"
+                placeholder="DD.MM.YYYY"
+                class="show-clients-textinput input"
+              />
+              <span class="show-clients-text025">по</span>
+              <input
+                type="text"
+                placeholder="DD.MM.YYYY"
+                class="show-clients-textinput1 input"
+              />
+            </div>
+            <div class="show-clients-container024">
+              <input type="checkbox" class="show-clients-checkbox13" />
+              <span class="show-clients-text026">
+                Имя или название содержит
+              </span>
+              <input type="text" class="show-clients-textinput2 input" />
+            </div>
+            <div class="show-clients-container025">
+              <input type="checkbox" class="show-clients-checkbox14" />
+              <span class="show-clients-text027">Номер клиента</span>
+              <input
+                type="text"
+                placeholder="12345678"
+                class="show-clients-textinput3 input"
+              />
+            </div>
+          </div>
+          <div class="show-clients-container026">
+            <form class="show-clients-form01">
+              <button class="show-clients-button01 button">Find</button>
+            </form>
+          </div>
+        </div>
+        <div class="show-clients-container027">
+          <div class="show-clients-container028">
+            <span class="show-clients-text028">Клиентов найдено: N</span>
+          </div>
+        </div>
+        <div style="overflow-y: scroll;" class="show-clients-container029">
+          <div class="show-clients-container030">
+            <div class="show-clients-container031">
+              <div class="show-clients-container032">
+                <div class="show-clients-container033">
+                  <h4 class="show-clients-text029">Иванов Иван Иванович</h4>
+                  <div class="show-clients-container034">
+                    <span class="show-clients-text030">12345678</span>
+                    <span class="show-clients-text031">(физ. лицо)</span>
+                  </div>
+                </div>
+                <div class="show-clients-container035">
+                  <form action="del-client.html" class="show-clients-form02">
+                    <button class="show-clients-button02 button">-</button>
+                  </form>
+                  <form action="alter-client.html" class="show-clients-form03">
+                    <button class="show-clients-button03 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-clients-container036">
+              <div class="show-clients-container037">
+                <div class="show-clients-container038">
+                  <span class="show-clients-text032">всего счетов:</span>
+                  <span class="show-clients-text033">N</span>
+                </div>
+                <div class="show-clients-container039">
+                  <span class="show-clients-text034">действующих:</span>
+                  <span class="show-clients-text035">N</span>
+                </div>
+              </div>
+              <div class="show-clients-container040">
+                <div class="show-clients-container041">
+                  <span class="show-clients-text036">телефон:</span>
+                  <span class="show-clients-text037">1(234)567-89-01</span>
+                </div>
+                <div class="show-clients-container042">
+                  <span class="show-clients-text038">email:</span>
+                  <span class="show-clients-text039">example@domain.ru</span>
+                </div>
+              </div>
+              <div class="show-clients-container043">
+                <span class="show-clients-text040">адрес:</span>
+                <span class="show-clients-text041">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="show-clients-container044">
+            <div class="show-clients-container045">
+              <div class="show-clients-container046">
+                <div class="show-clients-container047">
+                  <h4 class="show-clients-text042">Иванов Иван Иванович</h4>
+                  <div class="show-clients-container048">
+                    <span class="show-clients-text043">12345678</span>
+                    <span class="show-clients-text044">(физ. лицо)</span>
+                  </div>
+                </div>
+                <div class="show-clients-container049">
+                  <form action="del-client.html" class="show-clients-form04">
+                    <button class="show-clients-button04 button">-</button>
+                  </form>
+                  <form action="alter-client.html" class="show-clients-form05">
+                    <button class="show-clients-button05 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-clients-container050">
+              <div class="show-clients-container051">
+                <div class="show-clients-container052">
+                  <span class="show-clients-text045">всего счетов:</span>
+                  <span class="show-clients-text046">N</span>
+                </div>
+                <div class="show-clients-container053">
+                  <span class="show-clients-text047">действующих:</span>
+                  <span class="show-clients-text048">N</span>
+                </div>
+              </div>
+              <div class="show-clients-container054">
+                <div class="show-clients-container055">
+                  <span class="show-clients-text049">телефон:</span>
+                  <span class="show-clients-text050">1(234)567-89-01</span>
+                </div>
+                <div class="show-clients-container056">
+                  <span class="show-clients-text051">email:</span>
+                  <span class="show-clients-text052">example@domain.ru</span>
+                </div>
+              </div>
+              <div class="show-clients-container057">
+                <span class="show-clients-text053">адрес:</span>
+                <span class="show-clients-text054">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="show-clients-container058">
+            <div class="show-clients-container059">
+              <div class="show-clients-container060">
+                <div class="show-clients-container061">
+                  <h4 class="show-clients-text055">Иванов Иван Иванович</h4>
+                  <div class="show-clients-container062">
+                    <span class="show-clients-text056">12345678</span>
+                    <span class="show-clients-text057">(физ. лицо)</span>
+                  </div>
+                </div>
+                <div class="show-clients-container063">
+                  <form action="del-client.html" class="show-clients-form06">
+                    <button class="show-clients-button06 button">-</button>
+                  </form>
+                  <form action="alter-client.html" class="show-clients-form07">
+                    <button class="show-clients-button07 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-clients-container064">
+              <div class="show-clients-container065">
+                <div class="show-clients-container066">
+                  <span class="show-clients-text058">всего счетов:</span>
+                  <span class="show-clients-text059">N</span>
+                </div>
+                <div class="show-clients-container067">
+                  <span class="show-clients-text060">действующих:</span>
+                  <span class="show-clients-text061">N</span>
+                </div>
+              </div>
+              <div class="show-clients-container068">
+                <div class="show-clients-container069">
+                  <span class="show-clients-text062">телефон:</span>
+                  <span class="show-clients-text063">1(234)567-89-01</span>
+                </div>
+                <div class="show-clients-container070">
+                  <span class="show-clients-text064">email:</span>
+                  <span class="show-clients-text065">example@domain.ru</span>
+                </div>
+              </div>
+              <div class="show-clients-container071">
+                <span class="show-clients-text066">адрес:</span>
+                <span class="show-clients-text067">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="show-clients-container072">
+            <div class="show-clients-container073">
+              <div class="show-clients-container074">
+                <div class="show-clients-container075">
+                  <h4 class="show-clients-text068">Иванов Иван Иванович</h4>
+                  <div class="show-clients-container076">
+                    <span class="show-clients-text069">12345678</span>
+                    <span class="show-clients-text070">(физ. лицо)</span>
+                  </div>
+                </div>
+                <div class="show-clients-container077">
+                  <form action="del-client.html" class="show-clients-form08">
+                    <button class="show-clients-button08 button">-</button>
+                  </form>
+                  <form action="alter-client.html" class="show-clients-form09">
+                    <button class="show-clients-button09 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-clients-container078">
+              <div class="show-clients-container079">
+                <div class="show-clients-container080">
+                  <span class="show-clients-text071">всего счетов:</span>
+                  <span class="show-clients-text072">N</span>
+                </div>
+                <div class="show-clients-container081">
+                  <span class="show-clients-text073">действующих:</span>
+                  <span class="show-clients-text074">N</span>
+                </div>
+              </div>
+              <div class="show-clients-container082">
+                <div class="show-clients-container083">
+                  <span class="show-clients-text075">телефон:</span>
+                  <span class="show-clients-text076">1(234)567-89-01</span>
+                </div>
+                <div class="show-clients-container084">
+                  <span class="show-clients-text077">email:</span>
+                  <span class="show-clients-text078">example@domain.ru</span>
+                </div>
+              </div>
+              <div class="show-clients-container085">
+                <span class="show-clients-text079">адрес:</span>
+                <span class="show-clients-text080">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="show-clients-container086">
+            <div class="show-clients-container087">
+              <div class="show-clients-container088">
+                <div class="show-clients-container089">
+                  <h4 class="show-clients-text081">Иванов Иван Иванович</h4>
+                  <div class="show-clients-container090">
+                    <span class="show-clients-text082">12345678</span>
+                    <span class="show-clients-text083">(физ. лицо)</span>
+                  </div>
+                </div>
+                <div class="show-clients-container091">
+                  <form action="del-client.html" class="show-clients-form10">
+                    <button class="show-clients-button10 button">-</button>
+                  </form>
+                  <form action="alter-client.html" class="show-clients-form11">
+                    <button class="show-clients-button11 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-clients-container092">
+              <div class="show-clients-container093">
+                <div class="show-clients-container094">
+                  <span class="show-clients-text084">всего счетов:</span>
+                  <span class="show-clients-text085">N</span>
+                </div>
+                <div class="show-clients-container095">
+                  <span class="show-clients-text086">действующих:</span>
+                  <span class="show-clients-text087">N</span>
+                </div>
+              </div>
+              <div class="show-clients-container096">
+                <div class="show-clients-container097">
+                  <span class="show-clients-text088">телефон:</span>
+                  <span class="show-clients-text089">1(234)567-89-01</span>
+                </div>
+                <div class="show-clients-container098">
+                  <span class="show-clients-text090">email:</span>
+                  <span class="show-clients-text091">example@domain.ru</span>
+                </div>
+              </div>
+              <div class="show-clients-container099">
+                <span class="show-clients-text092">адрес:</span>
+                <span class="show-clients-text093">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="show-clients-container100">
+            <div class="show-clients-container101">
+              <div class="show-clients-container102">
+                <div class="show-clients-container103">
+                  <h4 class="show-clients-text094">Иванов Иван Иванович</h4>
+                  <div class="show-clients-container104">
+                    <span class="show-clients-text095">12345678</span>
+                    <span class="show-clients-text096">(физ. лицо)</span>
+                  </div>
+                </div>
+                <div class="show-clients-container105">
+                  <form action="del-client.html" class="show-clients-form12">
+                    <button class="show-clients-button12 button">-</button>
+                  </form>
+                  <form action="alter-client.html" class="show-clients-form13">
+                    <button class="show-clients-button13 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-clients-container106">
+              <div class="show-clients-container107">
+                <div class="show-clients-container108">
+                  <span class="show-clients-text097">всего счетов:</span>
+                  <span class="show-clients-text098">N</span>
+                </div>
+                <div class="show-clients-container109">
+                  <span class="show-clients-text099">действующих:</span>
+                  <span class="show-clients-text100">N</span>
+                </div>
+              </div>
+              <div class="show-clients-container110">
+                <div class="show-clients-container111">
+                  <span class="show-clients-text101">телефон:</span>
+                  <span class="show-clients-text102">1(234)567-89-01</span>
+                </div>
+                <div class="show-clients-container112">
+                  <span class="show-clients-text103">email:</span>
+                  <span class="show-clients-text104">example@domain.ru</span>
+                </div>
+              </div>
+              <div class="show-clients-container113">
+                <span class="show-clients-text105">адрес:</span>
+                <span class="show-clients-text106">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="show-clients-container114">
+            <div class="show-clients-container115">
+              <div class="show-clients-container116">
+                <div class="show-clients-container117">
+                  <h4 class="show-clients-text107">Иванов Иван Иванович</h4>
+                  <div class="show-clients-container118">
+                    <span class="show-clients-text108">12345678</span>
+                    <span class="show-clients-text109">(физ. лицо)</span>
+                  </div>
+                </div>
+                <div class="show-clients-container119">
+                  <form action="del-client.html" class="show-clients-form14">
+                    <button class="show-clients-button14 button">-</button>
+                  </form>
+                  <form action="alter-client.html" class="show-clients-form15">
+                    <button class="show-clients-button15 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-clients-container120">
+              <div class="show-clients-container121">
+                <div class="show-clients-container122">
+                  <span class="show-clients-text110">всего счетов:</span>
+                  <span class="show-clients-text111">N</span>
+                </div>
+                <div class="show-clients-container123">
+                  <span class="show-clients-text112">действующих:</span>
+                  <span class="show-clients-text113">N</span>
+                </div>
+              </div>
+              <div class="show-clients-container124">
+                <div class="show-clients-container125">
+                  <span class="show-clients-text114">телефон:</span>
+                  <span class="show-clients-text115">1(234)567-89-01</span>
+                </div>
+                <div class="show-clients-container126">
+                  <span class="show-clients-text116">email:</span>
+                  <span class="show-clients-text117">example@domain.ru</span>
+                </div>
+              </div>
+              <div class="show-clients-container127">
+                <span class="show-clients-text118">адрес:</span>
+                <span class="show-clients-text119">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  </body>
+</html>
