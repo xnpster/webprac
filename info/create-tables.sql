@@ -4,6 +4,7 @@ CREATE TABLE "Clients" (
   "address" text,
   "email" varchar(100),
   "phone" varchar(15),
+  "is_phy" bool,
   PRIMARY KEY ("id")
 );
 

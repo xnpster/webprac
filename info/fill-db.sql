@@ -1,15 +1,15 @@
-INSERT INTO "Clients" ("name", "address", "email", "phone")
+INSERT INTO "Clients" ("name", "address", "email", "phone", "is_phy")
 VALUES
-    ('Arhipova Svetlana Dmitrievna', 'Boulevard Vesnin Brothers, 2G, Moscow', 'arhipova@mail.ru', '79395247366'),
-    ('Lytkina Svetlana Vladislavovna', 'Leningradsky prospect, 36с39, Moscow', 's.l@yandex.ru', '79941605820'),
+    ('Arhipova Svetlana Dmitrievna', 'Boulevard Vesnin Brothers, 2G, Moscow', 'arhipova@mail.ru', '79395247366', true),
+    ('OJSC "Skotoboynya"', 'Leningradsky prospect, 36с39, Moscow', 'company@skotoboynya.ru', '79941605820', false),
 
-    ('Agafonova Marija Alekseevna', 'Pryluky street, 21-23A, Saint Petersburg', 'agafonova_marija@mail.ru', '79366726517'),
-    ('Fedoseev Trifon Ermolaevich', 'Izmailovsky Boulevard, 4k2, Saint Petersburg', 't-f@yandex.ru', '79027493396'),
+    ('Agafonova Marija Alekseevna', 'Pryluky street, 21-23A, Saint Petersburg', 'agafonova_marija@mail.ru', '79366726517', true),
+    ('Fedoseev Trifon Ermolaevich', 'Izmailovsky Boulevard, 4k2, Saint Petersburg', 't-f@yandex.ru', '79027493396', true),
 
-    ('Alekseev Agap Egorovich', 'Belinsky street, 202, Novosibirsk', 'a.a@yandex.ru', '79286058395'),
-    ('Seliverst Jakovlevich Potapov', 'Krasina street, 28, Nizhny Novgorod', 'j_seliverst@mail.ru', '79501672581'),
-    ('Viktor Gertrudovich Larionov', 'Stepan Razin street, 25, Yekaterinburg, Sverdlovsk region', 'gv@mail.ru', '79752686136'),
-    ('Frolova Fekla Stanislavovna', 'Strelochnikov street, 6, Yekaterinburg, Sverdlovsk region', 'feklaf@gmail.com', '79802544417');
+    ('Alekseev Agap Egorovich', 'Belinsky street, 202, Novosibirsk', 'a.a@yandex.ru', '79286058395', true),
+    ('Seliverst Jakovlevich Potapov', 'Krasina street, 28, Nizhny Novgorod', 'j_seliverst@mail.ru', '79501672581', true),
+    ('Viktor Gertrudovich Larionov', 'Stepan Razin street, 25, Yekaterinburg, Sverdlovsk region', 'gv@mail.ru', '79752686136', true),
+    ('Frolova Fekla Stanislavovna', 'Strelochnikov street, 6, Yekaterinburg, Sverdlovsk region', 'feklaf@gmail.com', '79802544417', true);
 
 
 INSERT INTO "Branches" ("name", "address", "city")
