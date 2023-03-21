@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My app</title>
+</head>
+
+<body>
+
+<p>Testing list!</p>
+
+<div>
+    <li>
+        <div th:each="e: ${dataArr}">
+            <ul th:text="${e.toString()}"/>
+        </div>
+    </li>
+</div>
+</body>
+
+</html>

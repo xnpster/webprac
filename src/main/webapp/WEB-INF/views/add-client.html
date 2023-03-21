@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Add client</title>
+    <meta property="og:title" content="add-client" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <!--This is the head section-->
+    <!-- <style> ... </style> -->
+    <style data-section-id="dropdown">
+      [data-thq="thq-dropdown"]:hover > [data-thq="thq-dropdown-list"] {
+          display: flex;
+        }
+
+        [data-thq="thq-dropdown"]:hover > div [data-thq="thq-dropdown-arrow"] {
+          transform: rotate(90deg);
+        }
+    </style>
+    <link rel="stylesheet" th:href="@{/styles/css/style.css}" />
+  </head>
+  <body>
+    <div>
+      <link th:href="@{/styles/css/add-client.css}" rel="stylesheet" />
+
+      <div class="add-client-container">
+        <div class="add-client-container01">
+          <h1 class="add-client-text">
+            <span>Добавление нового клиента</span>
+            <br />
+          </h1>
+          <div class="add-client-container02">
+            <div class="add-client-container03">
+              <span class="add-client-text03">Тип:</span>
+              <div class="add-client-container04">
+                <input
+                  type="radio"
+                  id="phy"
+                  name="add-cli-type"
+                  form="add-form"
+                  th:field="*{pageConf.type}"
+                  th:value="${clientTypePhys.getValue()}"
+                  th:checked="${pageConf.type == clientTypePhys.getValue()}"
+                  class="add-client-radiobutton"
+                />
+                <label for="phy" class="add-client-text04">физ. лицо</label>
+              </div>
+              <div class="add-client-container05">
+                <input
+                  type="radio"
+                  id="uri"
+                  name="add-cli-type"
+                  form="add-form"
+                  th:field="*{pageConf.type}"
+                  th:value="${clientTypeUr.getValue()}"
+                  th:checked="${pageConf.type == clientTypeUr.getValue()}"
+                  autocomplete="on"
+                  class="add-client-radiobutton1"
+                />
+                <label for="phy" class="add-client-text05">юр. лицо</label>
+              </div>
+            </div>
+            <div class="add-client-container06">
+              <span class="add-client-text06">ФИО/название</span>
+              <input
+                type="text"
+                class="add-client-textinput input"
+                form="add-form"
+                th:field="*{pageConf.name}"
+              />
+            </div>
+            <div class="add-client-container07">
+              <span class="add-client-text07">Телефон</span>
+              <input
+                type="text"
+                placeholder="71112223456"
+                class="add-client-textinput1 input"
+                form="add-form"
+                th:field="*{pageConf.phone}"
+              />
+            </div>
+            <div class="add-client-container08">
+              <span class="add-client-text08">Email</span>
+              <input
+                type="text"
+                class="add-client-textinput2 input"
+                form="add-form"
+                th:field="*{pageConf.email}"
+              />
+            </div>
+            <div class="add-client-container09">
+              <span class="add-client-text09">Адрес</span>
+              <input
+                type="text"
+                class="add-client-textinput3 input"
+                form="add-form"
+                th:field="*{pageConf.address}"
+              />
+            </div>
+            <div class="add-client-container10">
+              <form th:action="@{/try-add-client}" class="add-client-form" id="add-form" method="post">
+                <button type="submit" class="add-client-button button">
+                  <span>
+                    <span>Добавить</span>
+                    <br />
+                  </span>
+                </button>
+              </form>
+              <form th:action="@{/show-clients}" class="add-client-form1", method="get">
+                <button type="submit" class="add-client-button1 button">
+                  <span>
+                    <span>Назад</span>
+                    <br />
+                  </span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

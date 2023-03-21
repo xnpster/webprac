@@ -1,0 +1,121 @@
+.home-container {
+  width: 100%;
+  display: flex;
+  z-index: 100;
+  overflow: auto;
+  box-shadow: 5px 5px 10px 0px #d4d4d4;
+  min-height: 100vh;
+  transition: 0.3s;
+  align-items: center;
+  /*border-color: var(--dl-color-gray-black);*/
+  /*border-width: 1px;*/
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.home-text {
+  top: var(--dl-space-space-oneandhalfunits);
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  position: absolute;
+  font-size: 40px;
+  text-align: center;
+  font-family: Comic Sans MS;
+}
+.home-form {
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 130px;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.home-button {
+  color: rgb(0, 0, 0);
+  width: var(--dl-size-size-large);
+  height: 58px;
+  padding: var(--dl-space-space-unit);
+  font-size: 20px;
+  align-self: center;
+  margin-top: 0px;
+  text-align: center;
+  transition: 0.3s;
+  font-family: Comic Sans MS;
+  padding-top: 16px;
+  border-radius: 20px;
+  padding-right: 16px;
+  background-color: #cacaca;
+}
+.home-button:hover {
+  background-color: rgba(0, 62, 179, 0.43);
+}
+.home-button:active {
+  border-radius: 20px;
+  background-color: var(--dl-color-primary-300);
+}
+.home-form1 {
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: var(--dl-space-space-oneandhalfunits);
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.home-button1 {
+  color: rgb(0, 0, 0);
+  width: var(--dl-size-size-large);
+  height: 58px;
+  padding: var(--dl-space-space-unit);
+  font-size: 20px;
+  align-self: center;
+  margin-top: 0px;
+  text-align: center;
+  transition: 0.3s;
+  font-family: Comic Sans MS;
+  padding-top: 16px;
+  border-radius: 20px;
+  padding-right: 16px;
+  background-color: #cacaca;
+}
+.home-button1:hover {
+  background-color: rgba(0, 62, 179, 0.43);
+}
+.home-button1:active {
+  border-radius: 20px;
+  background-color: var(--dl-color-primary-300);
+}
+.home-form2 {
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: var(--dl-space-space-oneandhalfunits);
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.home-button2 {
+  color: rgb(0, 0, 0);
+  width: var(--dl-size-size-large);
+  height: 58px;
+  padding: var(--dl-space-space-unit);
+  font-size: 20px;
+  align-self: center;
+  margin-top: 0px;
+  text-align: center;
+  transition: 0.3s;
+  font-family: Comic Sans MS;
+  padding-top: 16px;
+  border-radius: 20px;
+  padding-right: 16px;
+  background-color: #cacaca;
+}
+.home-button2:hover {
+  background-color: rgba(0, 62, 179, 0.43);
+}
+.home-button2:active {
+  border-radius: 20px;
+  background-color: var(--dl-color-primary-300);
+}

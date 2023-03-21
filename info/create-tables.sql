@@ -36,7 +36,8 @@ CREATE TABLE "Accounts" (
   PRIMARY KEY ("id"),
   CONSTRAINT "FK_Accounts.client_id"
     FOREIGN KEY ("client_id")
-      REFERENCES "Clients"("id"),
+      REFERENCES "Clients"("id")
+        ON DELETE CASCADE,
   CONSTRAINT "FK_Accounts.branch_id"
     FOREIGN KEY ("branch_id")
       REFERENCES "Branches"("id"),
@@ -52,4 +53,5 @@ CREATE TABLE "History" (
   CONSTRAINT "FK_History.account_id"
     FOREIGN KEY ("account_id")
       REFERENCES "Accounts"("id")
+        ON DELETE CASCADE
 );

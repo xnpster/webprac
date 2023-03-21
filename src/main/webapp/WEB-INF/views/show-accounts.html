@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>show-accounts - Growing Attached Coyote</title>
+    <meta
+      property="og:title"
+      content="show-accounts - Growing Attached Coyote"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <!--This is the head section-->
+    <!-- <style> ... </style> -->
+    <style data-section-id="dropdown">
+      [data-thq="thq-dropdown"]:hover > [data-thq="thq-dropdown-list"] {
+          display: flex;
+        }
+
+        [data-thq="thq-dropdown"]:hover > div [data-thq="thq-dropdown-arrow"] {
+          transform: rotate(90deg);
+        }
+    </style>
+    <link rel="stylesheet" th:href="@{/styles/css/style.css}" />
+  </head>
+  <body>
+    <div>
+      <link th:href="@{/styles/css/show-accounts.css}" rel="stylesheet" />
+
+      <div class="show-accounts-container">
+        <h1 class="show-accounts-text">
+          <span>Счета:</span>
+          <br />
+        </h1>
+        <div class="show-accounts-container01">
+          <div class="show-accounts-container02">
+            <div class="show-accounts-container03">
+              <input type="checkbox"
+                class="show-accounts-checkbox"
+                form="filter"
+                th:field="*{pageConf.allowAccountTypesId}"
+                th:checked="${pageConf.allowAccountTypesId}"
+              />
+              <span class="show-accounts-text03">Виды счетов</span>
+            </div>
+            <div
+              style="overflow-y: scroll; height:400px;"
+              class="show-accounts-container04"
+            >
+              <div class="show-accounts-container05" th:each="e: ${bank.getAllAccountTypes()}">
+                <input
+                  type="checkbox"
+                  class="show-accounts-checkbox01"
+                  form="filter"
+                  th:field="*{pageConf.accountTypesId}"
+                  th:value="${e.id}"
+                  th:checked="${pageConf.accountTypesId.contains(e.id)}"
+                />
+                <span class="show-accounts-text04" th:text="${e.name}">Вид счёта 1</span>
+              </div>
+
+            </div>
+          </div>
+          <div class="show-accounts-container16">
+            <div class="show-accounts-container17">
+              <input type="checkbox"
+                class="show-accounts-checkbox12"
+                form="filter"
+                th:field="*{pageConf.allowAccountNo}"
+                th:checked="${pageConf.allowAccountNo}"
+              />
+              <span class="show-accounts-text15">Номер счёта</span>
+              <input
+                type="text"
+                placeholder="12345678"
+                class="show-accounts-textinput input"
+                form="filter"
+                th:field="*{pageConf.accountNo}"
+              />
+            </div>
+            <div class="show-accounts-container18">
+              <input
+                type="checkbox"
+                class="show-accounts-checkbox13"
+                th:field="*{pageConf.allowClientNo}"
+                th:checked="${pageConf.allowClientNo}"
+                form="filter"
+              />
+              <span class="show-accounts-text16">Номер клиента</span>
+              <input
+                type="text"
+                placeholder="12345678"
+                class="show-accounts-textinput1 input"
+                form="filter"
+                th:field="*{pageConf.clientNo}"
+              />
+            </div>
+          </div>
+          <div class="show-accounts-container19">
+            <form th:action="@{/add-account}" class="show-accounts-form" method="get">
+              <button class="show-accounts-button button">+</button>
+            </form>
+          </div>
+        </div>
+        <div
+          data-thq="thq-dropdown"
+          class="show-accounts-thq-dropdown list-item"
+        >
+          <ul data-thq="thq-dropdown-list" class="show-accounts-dropdown-list">
+            <li
+              data-thq="thq-dropdown"
+              class="show-accounts-dropdown list-item"
+            >
+              <div
+                data-thq="thq-dropdown-toggle"
+                class="show-accounts-dropdown-toggle"
+              >
+                <span class="show-accounts-text17">Sub-menu Item</span>
+              </div>
+            </li>
+            <li
+              data-thq="thq-dropdown"
+              class="show-accounts-dropdown1 list-item"
+            >
+              <div
+                data-thq="thq-dropdown-toggle"
+                class="show-accounts-dropdown-toggle1"
+              >
+                <span class="show-accounts-text18">Sub-menu Item</span>
+              </div>
+            </li>
+            <li
+              data-thq="thq-dropdown"
+              class="show-accounts-dropdown2 list-item"
+            >
+              <div
+                data-thq="thq-dropdown-toggle"
+                class="show-accounts-dropdown-toggle2"
+              >
+                <span class="show-accounts-text19">Sub-menu Item</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="show-accounts-container20">
+          <div class="show-accounts-container21">
+            <div class="show-accounts-container22">
+              <input
+                type="checkbox"
+                class="show-accounts-checkbox14"
+                form="filter"
+                th:field="*{pageConf.allowWithdrawDateRange}"
+                th:checked="${pageConf.allowWithdrawDateRange}"
+              />
+              <span class="show-accounts-text20">Есть списания в период с</span>
+              <input
+                type="date"
+                form="filter"
+                class="show-accounts-textinput2 input"
+                th:field="*{pageConf.withdrawStartDate}"
+              />
+              <span class="show-accounts-text21">по</span>
+              <input
+                type="date"
+                form="filter"
+                th:field="*{pageConf.withdrawEndDate}"
+                class="show-accounts-textinput3 input"
+              />
+            </div>
+            <div class="show-accounts-container23">
+              <input
+                type="checkbox"
+                class="show-accounts-checkbox15"
+                form="filter"
+                th:field="*{pageConf.allowDepositDateRange}"
+                th:checked="${pageConf.allowDepositDateRange}"
+              />
+              <span class="show-accounts-text22">
+                Есть начисления в период с
+              </span>
+              <input
+                type="date"
+                form="filter"
+                th:field="*{pageConf.depositStartDate}"
+                class="show-accounts-textinput4 input"
+              />
+              <span class="show-accounts-text23">по</span>
+              <input
+                type="date"
+                form="filter"
+                th:field="*{pageConf.depositEndDate}"
+                class="show-accounts-textinput5 input"
+              />
+            </div>
+          </div>
+          <form id="filter" th:action="@{/show-accounts}" class="show-accounts-form1" method="post">
+            <button class="show-accounts-button1 button">Find</button>
+          </form>
+        </div>
+        <div class="show-accounts-container24">
+          <div class="show-accounts-container25">
+            <span class="show-accounts-text24">Счетов найдено:</span>
+            <span class="show-accounts-text25" th:text="${accountList.size() }">N</span>
+          </div>
+        </div>
+        <div style="overflow-y: scroll;" class="show-accounts-container26" >
+          <div class="show-accounts-container27" th:each="e: ${accountList}">
+            <div class="show-accounts-container28">
+              <div class="show-accounts-container29">
+                <div class="show-accounts-container30">
+                  <div class="show-accounts-container31">
+                    <h4 class="show-accounts-text26">Номер счёта:</h4>
+                    <span class="show-accounts-text27" th:text="${e.getId()}">123456789</span>
+                  </div>
+                  <div class="show-accounts-container32">
+                    <h4 class="show-accounts-text28">Вид:</h4>
+                    <span class="show-accounts-text29" th:text="${e.getType().getName()}">Вид счёта 1</span>
+                  </div>
+                </div>
+                <div class="show-accounts-container33">
+                  <div class="show-accounts-container34">
+                    <h4 class="show-accounts-text30">Статус:</h4>
+                    <span class="show-accounts-text31" th:text="${e.getClose_date() == null ? 'открыт' : 'закрыт'}">открыт</span>
+                  </div>
+                </div>
+                <div th:if="${e.getClose_date() == null}" class="show-accounts-container35">
+                  <form th:action="@{/del-account}" class="show-accounts-form2" method="get">
+                    <input type="hidden" name="id" th:value="${e.getId()}">
+                    <button class="show-accounts-button2 button">-</button>
+                  </form>
+                  <form th:action="@{/alter-account}" class="show-accounts-form3" method="get">
+                    <input type="hidden" name="id" th:value="${e.getId()}">
+                    <button class="show-accounts-button3 button">
+                      списать/начислить
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-accounts-container36">
+              <div class="show-accounts-container37">
+                <div class="show-accounts-container38">
+                  <span class="show-accounts-text32">Текущий баланс:</span>
+                  <span class="show-accounts-text33" th:text="${e.getBalance()}">N</span>
+                </div>
+                <div class="show-accounts-container39">
+                  <span class="show-accounts-text34">Номер отделения:</span>
+                  <span class="show-accounts-text35" th:text="${e.getBranch().getId()}">12345678</span>
+                </div>
+              </div>
+              <div class="show-accounts-container40">
+                <div class="show-accounts-container41">
+                  <span class="show-accounts-text36">ID клиента:</span>
+                  <span class="show-accounts-text37" th:text="${e.getClient().getId()}">12345678910</span>
+                </div>
+                <div class="show-accounts-container42">
+                  <span class="show-accounts-text38">владелец:</span>
+                  <span class="show-accounts-text39" th:text="${e.getClient().getName()}">Иванов Иван Иванович</span>
+                </div>
+              </div>
+              <div class="show-accounts-container43">
+                <div class="show-accounts-container44">
+                  <span class="show-accounts-text40">Дата открытия:</span>
+                  <span class="show-accounts-text41" th:text="${e.getOpen_date().toString()}">01.01.2000</span>
+                </div>
+                <div class="show-accounts-container45">
+                  <span class="show-accounts-text42">Дата закрытия:</span>
+                  <span class="show-accounts-text43" th:text="${e.getOpen_date() == null ? '-' : e.getOpen_date().toString()}">-</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

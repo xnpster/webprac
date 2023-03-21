@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>My app</title>
+</head>
+
+<body>
+<h1>Enter:</h1>
+
+
+<input type="checkbox" th:field="*{formExample1.defaultCheckbox}" form="mainform" />
+
+<input type="checkbox" th:field="*{formExample1.checkboxes}" value="200" form="mainform" />
+<form th:action="@{/form_example}" method="post" th:object="${formExample1}" id="mainform">
+    <input type="text" value="Hello, world!" th:field="*{s}">
+    <input type="checkbox" th:field="*{checkboxes}" value="100" />
+    <input type="submit" value="Submit" />
+</form>
+
+
+</body>
+
+</html>

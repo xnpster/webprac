@@ -1,12 +1,392 @@
 package com.jabaprac.webapp;
 
+import com.jabaprac.webapp.banksystem.BankSystem;
+import com.jabaprac.webapp.dbobjects.*;
+
+import com.jabaprac.webapp.pageconf.*;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
+
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.LinkedList;
+import java.util.List;
 
 @Controller
 public class MainController {
+
+
+    @Qualifier("bankSystem")
+    @Autowired
+    private BankSystem bank;
+    private LinkedList<String> strings = new LinkedList<>();
+    private String singleString;
+
+    private EntityManager em;
+
+    public EntityManager getEm() {
+        return em;
+    }
+
+    @Qualifier("entityManager")
+    @Autowired
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
+
+    public TestBean getTb() {
+        return tb;
+    }
+
+    @Qualifier("testBean")
+    @Autowired
+    public void setTb(TestBean tb) {
+        this.tb = tb;
+    }
+
+    private TestBean tb;
+    public List<String> getStrings() {
+        return strings;
+    }
+
+    public void setStrings(LinkedList<String> strings) {
+        this.strings = strings;
+    }
+
+    public String getSingleString() {
+        return singleString;
+    }
+
+    @Value("one single string")
+    public void setSingleString(String singleString) {
+        this.singleString = singleString;
+    }
+
+    @ModelAttribute("singleStr")
+    public String sS() {
+        return getSingleString();
+    }
+
+    @ModelAttribute("stringArr")
+    public List<String> stringArr() {
+        return strings;
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        // change the format according to your need.
+        dateFormat.setLenient(false);
+
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
+
     @GetMapping("/")
-    public String sayHello() {
-        return "hello_world";
+    public String index() {
+        return "index";
+    }
+
+    @GetMapping("/testcss")
+    public String testCSS() {
+        return "page2";
+    }
+
+    @GetMapping("/testparam")
+    public String testParam() {
+        return "testparam";
+    }
+
+    @GetMapping("/testfactory")
+    public String testSessionFactory() {
+
+
+        return "testparam";
+    }
+
+    @GetMapping(value="/testlist")
+    public ModelAndView testList(
+            @RequestParam(value = "y", required = false) Integer year,
+            @RequestParam(value = "d", required = false) Integer day,
+            @RequestParam(value = "m", required = false) Integer month
+            ) {
+
+        if(year == null) {
+            year = 1950;
+        }
+
+        if(month == null) {
+            month = 0;
+        }
+
+        if(day == null) {
+            day = 1;
+        }
+
+        ModelAndView mav = new ModelAndView("testlist");
+
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+
+        CriteriaQuery<History> q = cb.createQuery(History.class);
+        Root<History> accs = q.from(History.class);
+
+        q.select(accs);
+        q.where(cb.greaterThan(accs.get(History_.date), cb.literal(new Date(year - 1900, month - 1, day))));
+
+        List<History> ents = em.createQuery(q).getResultList();
+
+        mav.addObject("dataArr", ents);
+
+        return mav;
+    }
+
+    @GetMapping(value="/test_acc_types")
+    public ModelAndView testAccTypes() {
+        ModelAndView mav = new ModelAndView("testlist");
+
+        mav.addObject("dataArr", bank.getAllAccountTypes());
+
+        return mav;
+    }
+
+    @GetMapping("/form_example")
+    public String showForm(Model mod) {
+        mod.addAttribute("formExample1", new FormExample());
+        mod.addAttribute("formExample2", new FormExample());
+
+        return "form_example";
+    }
+
+    @PostMapping("/form_example")
+    public String showForm(@ModelAttribute(name="formExample1") FormExample fe1,
+                           @ModelAttribute(name="formExample2") FormExample fe2,
+                           Model mod) {
+        mod.addAttribute("formExample1", fe1);
+        mod.addAttribute("formExample2", fe2);
+//        mod.addAttribute("checkbox1", checkbox1);
+
+        return "form_show";
+    }
+
+    @GetMapping("/show-clients")
+    public String showClientsGet(Model mod) {
+
+        FindClientConfiguration defaultClientConf = new FindClientConfiguration();
+        List<ClientView> foundClients = bank.getClientList(defaultClientConf);
+
+        mod.addAttribute("pageConf", new FindClientConfiguration());
+
+        mod.addAttribute("clientList", foundClients);
+
+        mod.addAttribute("clientTypeAll", ClientType.ALL);
+        mod.addAttribute("clientTypePhys", ClientType.ONLY_PHYS);
+        mod.addAttribute("clientTypeUr", ClientType.ONLY_UR);
+
+        mod.addAttribute("checkboxOn", CheckboxValue.ON.getVal());
+        mod.addAttribute("checkboxOff", CheckboxValue.OFF.getVal());
+
+        mod.addAttribute("bank", bank);
+
+        return "show-clients";
+    }
+
+    @PostMapping("/show-clients")
+    public String showClientsPost(@ModelAttribute(name="pageConf") FindClientConfiguration conf, Model mod) {
+        List<ClientView> foundClients = bank.getClientList(conf);
+
+        mod.addAttribute("pageConf", conf);
+
+        mod.addAttribute("clientList", foundClients);
+
+        mod.addAttribute("clientTypeAll", ClientType.ALL);
+        mod.addAttribute("clientTypePhys", ClientType.ONLY_PHYS);
+        mod.addAttribute("clientTypeUr", ClientType.ONLY_UR);
+
+        mod.addAttribute("checkboxOn", CheckboxValue.ON.getVal());
+        mod.addAttribute("checkboxOff", CheckboxValue.OFF.getVal());
+
+        mod.addAttribute("bank", bank);
+
+//        return "print_configuration";
+        return "show-clients";
+    }
+
+    @GetMapping("/add-client")
+    public String addClientGet(Model mod) {
+        ClientConfiguration defaultConf = new ClientConfiguration();
+        mod.addAttribute("pageConf", defaultConf);
+
+        mod.addAttribute("clientTypeAll", ClientType.ALL);
+        mod.addAttribute("clientTypePhys", ClientType.ONLY_PHYS);
+        mod.addAttribute("clientTypeUr", ClientType.ONLY_UR);
+
+        return "add-client";
+    }
+
+    @PostMapping("/add-client")
+    public String addClientGet(@ModelAttribute(name="pageConf") ClientConfiguration conf, Model mod) {
+        mod.addAttribute("pageConf", conf);
+
+        mod.addAttribute("clientTypeAll", ClientType.ALL);
+        mod.addAttribute("clientTypePhys", ClientType.ONLY_PHYS);
+        mod.addAttribute("clientTypeUr", ClientType.ONLY_UR);
+
+        return "add-client";
+    }
+
+    @PostMapping("/try-add-client")
+    public String tryAddClientPost(@ModelAttribute(name="pageConf") ClientConfiguration conf, Model mod) {
+        mod.addAttribute("clientTypeAll", ClientType.ALL);
+        mod.addAttribute("clientTypePhys", ClientType.ONLY_PHYS);
+        mod.addAttribute("clientTypeUr", ClientType.ONLY_UR);
+
+        boolean errorOccured = false;
+        Clients added = null;
+
+        String err = conf.verify();
+        errorOccured = err != null;
+
+        if(!errorOccured) {
+            try {
+                added = bank.persistClient(conf);
+                if(added == null) {
+                    errorOccured = true;
+                    err = "Undefined error on saving client info";
+                }
+            } catch (Exception e) {
+                errorOccured = true;
+                err = e.getMessage();
+            }
+        }
+
+        if(errorOccured) {
+            mod.addAttribute("pageConf", conf);
+            mod.addAttribute("ErrorMessage", err);
+
+            return "add-client-fail";
+        } else {
+            mod.addAttribute("client", added);
+
+            return "add-client-success";
+        }
+    }
+
+    @GetMapping("/del-client")
+    public String delClientGet(Long id, Model mod) {
+        Clients client = bank.clientById(id);
+
+        mod.addAttribute("client", client);
+        return "del-client";
+    }
+
+    @PostMapping("/try-del-client")
+    public String tryDelClientPost(Long id, Model mod) {
+        Clients client = bank.clientById(id);
+        mod.addAttribute("client", client);
+
+        boolean errorOccurred = false;
+        String errMsg = "";
+        try {
+            bank.removeClient(client);
+        } catch (Exception e) {
+            errorOccurred = true;
+            errMsg = "Ошибка при удалении данных из базы";
+        }
+
+        if(errorOccurred) {
+            mod.addAttribute("ErrorMessage", errMsg);
+            return "del-client-fail";
+        } else {
+            return "del-client-success";
+        }
+    }
+
+    @GetMapping("/alter-client")
+    public String alterClientGet(Long id, Model mod) {
+        Clients client = bank.clientById(id);
+
+        ClientConfiguration conf = new ClientConfiguration(client);
+        mod.addAttribute("pageConf", conf);
+        mod.addAttribute("clientId", id);
+        mod.addAttribute("clientTypePhys", ClientType.ONLY_PHYS);
+        mod.addAttribute("clientTypeUr", ClientType.ONLY_UR);
+
+        return "alter-client";
+    }
+
+    @PostMapping("/try-alter-client")
+    public String tryAlterClient(@ModelAttribute ClientConfiguration conf, @RequestParam Long id, Model mod) {
+        mod.addAttribute("clientTypePhys", ClientType.ONLY_PHYS);
+        mod.addAttribute("clientTypeUr", ClientType.ONLY_UR);
+
+        boolean errorOccured = false;
+        Clients altered = null;
+
+        String err = conf.verify();
+        errorOccured = err != null;
+
+        if(!errorOccured) {
+            try {
+                altered = bank.updateClient(id, conf);
+                if(altered == null) {
+                    errorOccured = true;
+                    err = "Undefined error on altering client info";
+                }
+            } catch (Exception e) {
+                errorOccured = true;
+                err = e.getMessage();
+            }
+        }
+
+        if(errorOccured) {
+            mod.addAttribute("pageConf", conf);
+            mod.addAttribute("ErrorMessage", err);
+            mod.addAttribute("clientId", id);
+
+            return "alter-client-fail";
+        } else {
+            mod.addAttribute("client", altered);
+
+            return "alter-client-success";
+        }
+    }
+
+    @GetMapping("/show-accounts")
+    public String showAccountsGet(Model mod) {
+        FindAccountConfiguration defaultConf = new FindAccountConfiguration();
+        List<Accounts> foundAccounts = bank.getAccountList(defaultConf);
+
+        mod.addAttribute("pageConf", defaultConf);
+
+        mod.addAttribute("accountList", foundAccounts);
+
+        mod.addAttribute("bank", bank);
+
+        return "show-accounts";
+    }
+
+    @PostMapping("/show-accounts")
+    public String showAccountsPost(@ModelAttribute(name="pageConf") FindAccountConfiguration conf, Model mod) {
+        List<Accounts> foundAccounts = bank.getAccountList(conf);
+
+        mod.addAttribute("pageConf", conf);
+
+        mod.addAttribute("accountList", foundAccounts);
+
+        mod.addAttribute("bank", bank);
+
+
+        return "show-accounts";
+//        return "page_configuration";
     }
 }

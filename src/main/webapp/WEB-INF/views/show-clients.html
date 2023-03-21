@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+  <head>
+    <title>show-clients - Growing Attached Coyote</title>
+    <meta
+      property="og:title"
+      content="show-clients - Growing Attached Coyote"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <!--This is the head section-->
+    <!-- <style> ... </style> -->
+    <style data-section-id="dropdown">
+      [data-thq="thq-dropdown"]:hover > [data-thq="thq-dropdown-list"] {
+          display: flex;
+        }
+
+        [data-thq="thq-dropdown"]:hover > div [data-thq="thq-dropdown-arrow"] {
+          transform: rotate(90deg);
+        }
+    </style>
+    <link rel="stylesheet" th:href="@{/styles/css/style.css}" />
+  </head>
+  <body>
+    <div>
+      <link th:href="@{/styles/css/show-clients.css}" rel="stylesheet" />
+
+      <div class="show-clients-container">
+        <h1 class="show-clients-text">
+          <span>Клиенты:</span>
+          <br />
+        </h1>
+        <div class="show-clients-container01">
+          <div class="show-clients-container02">
+            <h2 class="show-clients-text03">
+              <span>Вид:</span>
+              <br />
+            </h2>
+            <div class="show-clients-container03">
+              <input
+                type="radio"
+                id="all"
+                form="filter"
+                th:field="*{pageConf.type}"
+                th:value="${clientTypeAll.getValue()}"
+                th:checked="${pageConf.type == clientTypeAll.getValue()}"
+                autocomplete="on"
+                class="show-clients-radiobutton"
+              />
+              <label for="all" class="show-clients-text06">Все</label>
+            </div>
+            <div class="show-clients-container04">
+              <input
+                type="radio"
+                id="phy"
+                name="cli-type"
+                autocomplete="on"
+                form="filter"
+                th:field="*{pageConf.type}"
+                th:value="${clientTypePhys.getValue()}"
+                th:checked="${pageConf.type == clientTypePhys.getValue()}"
+                class="show-clients-radiobutton1"
+              />
+              <label for="phy" class="show-clients-text07">Физ. лицо</label>
+            </div>
+            <div class="show-clients-container05">
+              <input
+                type="radio"
+                id="uri"
+                name="cli-type"
+                autocomplete="on"
+                form="filter"
+                th:field="*{pageConf.type}"
+                th:value="${clientTypeUr.getValue()}"
+                th:checked="${pageConf.type == clientTypeUr.getValue()}"
+                class="show-clients-radiobutton2"
+              />
+              <label for="uri" class="show-clients-text08">Юр. лицо</label>
+            </div>
+          </div>
+          <div class="show-clients-container06">
+            <div class="show-clients-container07">
+              <input
+                type="checkbox"
+                form="filter"
+                class="show-clients-checkbox"
+                th:field="*{pageConf.allowAccountTypesId}"
+                th:checked="${pageConf.allowAccountTypesId}"
+              />
+              <span class="show-clients-text09">Виды счетов</span>
+            </div>
+            <div
+              style="overflow-y: scroll; height:400px;"
+              class="show-clients-container08"
+            >
+
+              <div class="show-clients-container09" th:each="e: ${bank.getAllAccountTypes()}">
+                <input
+                  type="checkbox"
+                  form="filter"
+                  class="show-clients-checkbox1"
+                  th:field="*{pageConf.accountTypesId}"
+                  th:value="${e.id}"
+                  th:checked="${pageConf.accountTypesId.contains(e.id)}"
+                />
+                <span class="show-clients-text10" th:text="${e.name}">Вид счёта 1</span>
+              </div>
+            </div>
+          </div>
+          <div class="show-clients-container10">
+            <form
+              th:action="@{/add-client}"
+              id="add-client"
+              class="show-clients-form"
+              method="get"
+            >
+              <button class="show-clients-button button">+</button>
+            </form>
+          </div>
+        </div>
+        <div
+          data-thq="thq-dropdown"
+          class="show-clients-thq-dropdown list-item"
+        >
+          <ul data-thq="thq-dropdown-list" class="show-clients-dropdown-list">
+            <li data-thq="thq-dropdown" class="show-clients-dropdown list-item">
+              <div
+                data-thq="thq-dropdown-toggle"
+                class="show-clients-dropdown-toggle"
+              >
+                <span class="show-clients-text11">Sub-menu Item</span>
+              </div>
+            </li>
+            <li
+              data-thq="thq-dropdown"
+              class="show-clients-dropdown1 list-item"
+            >
+              <div
+                data-thq="thq-dropdown-toggle"
+                class="show-clients-dropdown-toggle1"
+              >
+                <span class="show-clients-text12">Sub-menu Item</span>
+              </div>
+            </li>
+            <li
+              data-thq="thq-dropdown"
+              class="show-clients-dropdown2 list-item"
+            >
+              <div
+                data-thq="thq-dropdown-toggle"
+                class="show-clients-dropdown-toggle2"
+              >
+                <span class="show-clients-text13">Sub-menu Item</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="show-clients-container11">
+          <div class="show-clients-container12">
+            <div class="show-clients-container13">
+              <input
+                type="checkbox"
+                form="filter"
+                class="show-clients-checkbox2"
+                th:field="*{pageConf.allowDateRange}"
+                th:checked="${pageConf.allowDateRange}"
+              />
+              <span class="show-clients-text14">
+                Имеют хотя бы один активный счёт в период с
+              </span>
+              <input
+                type="date"
+                form="filter"
+                class="show-clients-textinput input"
+                th:field="*{pageConf.startDate}"
+              />
+              <span class="show-clients-text15">по</span>
+              <input
+                type="date"
+                form="filter"
+                class="show-clients-textinput1 input"
+                th:field="*{pageConf.endDate}"
+              />
+            </div>
+            <div class="show-clients-container14">
+              <input
+                type="checkbox"
+                form="filter"
+                class="show-clients-checkbox3"
+                th:field="*{pageConf.allowNameSubstring}"
+                th:checked="${pageConf.allowNameSubstring}"
+              />
+              <span class="show-clients-text16">Имя или название содержит</span>
+              <input
+                type="text"
+                form="filter"
+                class="show-clients-textinput2 input"
+                th:field="*{pageConf.nameSubstring}"
+              />
+            </div>
+            <div class="show-clients-container15">
+              <input
+                type="checkbox"
+                form="filter"
+                class="show-clients-checkbox4"
+                th:field="*{pageConf.allowClientNo}"
+                th:checked="${pageConf.allowClientNo}"
+              />
+              <span class="show-clients-text17">Номер клиента</span>
+              <input
+                type="text"
+                placeholder="12345678"
+                form="filter"
+                class="show-clients-textinput3 input"
+                th:field="*{pageConf.clientNo}"
+              />
+            </div>
+          </div>
+          <div class="show-clients-container16">
+            <form id="filter" method="post" class="show-clients-form1">
+              <button class="show-clients-button1 button">Find</button>
+            </form>
+          </div>
+        </div>
+        <div class="show-clients-container17">
+          <div class="show-clients-container18">
+            <span class="show-clients-text18" th:text="${'Клиентов найдено: ' + clientList.size() }">Клиентов найдено: N</span>
+          </div>
+        </div>
+        <div style="overflow-y: scroll;" class="show-clients-container19">
+          <div class="show-clients-container20" th:each="e: ${clientList}">
+            <div class="show-clients-container21">
+              <div class="show-clients-container22">
+                <div class="show-clients-container23">
+                  <h4 class="show-clients-text19" th:text="${e.getClient().name}">Иванов Иван Иванович</h4>
+                  <div class="show-clients-container24">
+                    <span class="show-clients-text20" th:text="${e.getClient().id}">12345678</span>
+                    <span class="show-clients-text21" th:text="${e.getClient().is_phy ? '(физ. лицо)' : '(юр. лицо)'}">(физ. лицо)</span>
+                  </div>
+                </div>
+                <div class="show-clients-container25">
+                  <form th:action="@{/del-client}" class="show-clients-form2" method="get">
+                    <input type="hidden" name="id" th:value="${e.getClient().id}"/>
+                    <button class="show-clients-button2 button">-</button>
+                  </form>
+                  <form th:action="@{/alter-client}" class="show-clients-form3">
+                    <input type="hidden" name="id" th:value="${e.getClient().id}"/>
+                    <button class="show-clients-button3 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-clients-container26">
+              <div class="show-clients-container27">
+                <div class="show-clients-container28">
+                  <span class="show-clients-text22">всего счетов:</span>
+                  <span class="show-clients-text23" th:text="${e.getTotalAccounts()}">N</span>
+                </div>
+                <div class="show-clients-container29">
+                  <span class="show-clients-text24">действующих:</span>
+                  <span class="show-clients-text25" th:text="${e.getOpenAccounts()}">N</span>
+                </div>
+              </div>
+              <div class="show-clients-container30">
+                <div class="show-clients-container31">
+                  <span class="show-clients-text26">телефон:</span>
+                  <span class="show-clients-text27" th:text="${e.getClient().phone}">1(234)567-89-01</span>
+                </div>
+                <div class="show-clients-container32">
+                  <span class="show-clients-text28">email:</span>
+                  <span class="show-clients-text29" th:text="${e.getClient().email}">example@domain.ru</span>
+                </div>
+              </div>
+              <div class="show-clients-container33">
+                <span class="show-clients-text30">адрес:</span>
+                <span class="show-clients-text31" th:text="${e.getClient().addr}">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

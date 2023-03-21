@@ -1,22 +1,27 @@
 package com.jabaprac.webapp;
 
+import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import javax.annotation.Resource;
+
 
 public class App
 {
+
+
+    @Resource(name = "testBean")
+    TestBean b;
+
     public static void main( String[] args ) {
-
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
-                MainConfig.class
-        );
-
-        Worker wrk = context.getBean("workerBean", Worker.class);
-        Worker wrk2 = context.getBean("workerBean", Worker.class);
-
-        wrk.saySomething();
-        wrk2.saySomething();
-        System.out.println("Hello World!");
-
-        context.close();
+        return;
     }
+    public App() {
+        System.out.println("Hello, world!");
+        if(b == null)
+            System.out.println("b is null");
+        else
+            System.out.println("b is not null");
+    }
+
 }

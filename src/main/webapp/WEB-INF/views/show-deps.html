@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>show-deps - Growing Attached Coyote</title>
+    <meta property="og:title" content="show-deps - Growing Attached Coyote" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <!--This is the head section-->
+    <!-- <style> ... </style> -->
+    <style data-section-id="dropdown">
+      [data-thq="thq-dropdown"]:hover > [data-thq="thq-dropdown-list"] {
+          display: flex;
+        }
+
+        [data-thq="thq-dropdown"]:hover > div [data-thq="thq-dropdown-arrow"] {
+          transform: rotate(90deg);
+        }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div>
+      <link href="./show-deps.css" rel="stylesheet" />
+
+      <div class="show-deps-container">
+        <h1 class="show-deps-text">
+          <span>Отделения:</span>
+          <br />
+        </h1>
+        <div class="show-deps-container001">
+          <div class="show-deps-container002">
+            <div class="show-deps-container003">
+              <input type="checkbox" class="show-deps-checkbox" />
+              <span class="show-deps-text03">Города</span>
+            </div>
+            <div
+              style="overflow-y: scroll; height:400px;"
+              class="show-deps-container004"
+            >
+              <div class="show-deps-container005">
+                <input type="checkbox" class="show-deps-checkbox01" />
+                <span class="show-deps-text04">Город 1</span>
+              </div>
+              <div class="show-deps-container006">
+                <input type="checkbox" class="show-deps-checkbox02" />
+                <span class="show-deps-text05">Город 1</span>
+              </div>
+              <div class="show-deps-container007">
+                <input type="checkbox" class="show-deps-checkbox03" />
+                <span class="show-deps-text06">Город 1</span>
+              </div>
+              <div class="show-deps-container008">
+                <input type="checkbox" class="show-deps-checkbox04" />
+                <span class="show-deps-text07">Город 1</span>
+              </div>
+              <div class="show-deps-container009">
+                <input type="checkbox" class="show-deps-checkbox05" />
+                <span class="show-deps-text08">Город 1</span>
+              </div>
+              <div class="show-deps-container010">
+                <input type="checkbox" class="show-deps-checkbox06" />
+                <span class="show-deps-text09">Город 1</span>
+              </div>
+              <div class="show-deps-container011">
+                <input type="checkbox" class="show-deps-checkbox07" />
+                <span class="show-deps-text10">Город 1</span>
+              </div>
+              <div class="show-deps-container012">
+                <input type="checkbox" class="show-deps-checkbox08" />
+                <span class="show-deps-text11">Город 1</span>
+              </div>
+              <div class="show-deps-container013">
+                <input type="checkbox" class="show-deps-checkbox09" />
+                <span class="show-deps-text12">Город 1</span>
+              </div>
+              <div class="show-deps-container014">
+                <input type="checkbox" class="show-deps-checkbox10" />
+                <span class="show-deps-text13">Город 1</span>
+              </div>
+              <div class="show-deps-container015">
+                <input type="checkbox" class="show-deps-checkbox11" />
+                <span class="show-deps-text14">Город 1</span>
+              </div>
+            </div>
+          </div>
+          <div class="show-deps-container016">
+            <div class="show-deps-container017">
+              <input type="checkbox" class="show-deps-checkbox12" />
+              <span class="show-deps-text15">Номер отделения</span>
+              <input
+                type="text"
+                placeholder="12345678"
+                class="show-deps-textinput input"
+              />
+            </div>
+            <div class="show-deps-container018">
+              <input type="checkbox" class="show-deps-checkbox13" />
+              <span class="show-deps-text16">Номер клиента</span>
+              <input
+                type="text"
+                placeholder="12345678"
+                class="show-deps-textinput1 input"
+              />
+            </div>
+            <div class="show-deps-container019">
+              <input type="checkbox" class="show-deps-checkbox14" />
+              <span class="show-deps-text17">Номер счёта</span>
+              <input
+                type="text"
+                placeholder="12345678"
+                class="show-deps-textinput2 input"
+              />
+            </div>
+          </div>
+          <div class="show-deps-container020">
+            <form action="add-dep.html" class="show-deps-form">
+              <button class="show-deps-button button">+</button>
+            </form>
+            <form action="not_implemented" class="show-deps-form01">
+              <button class="show-deps-button01 button">Find</button>
+            </form>
+          </div>
+        </div>
+        <div class="show-deps-container021">
+          <div class="show-deps-container022">
+            <span class="show-deps-text18">Отделений найдено:</span>
+            <span class="show-deps-text19">N</span>
+          </div>
+        </div>
+        <div style="overflow-y: scroll;" class="show-deps-container023">
+          <div class="show-deps-container024">
+            <div class="show-deps-container025">
+              <div class="show-deps-container026">
+                <div class="show-deps-container027">
+                  <div class="show-deps-container028">
+                    <h4 class="show-deps-text20">Номер отделения:</h4>
+                    <span class="show-deps-text21">123456789</span>
+                  </div>
+                </div>
+                <div class="show-deps-container029">
+                  <div class="show-deps-container030">
+                    <span class="show-deps-text22">Название:</span>
+                    <span class="show-deps-text23">Рога и копыта</span>
+                  </div>
+                </div>
+                <div class="show-deps-container031">
+                  <form action="del-dep.html" class="show-deps-form02">
+                    <button class="show-deps-button02 button">-</button>
+                  </form>
+                  <form action="alter-dep.html" class="show-deps-form03">
+                    <button class="show-deps-button03 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-deps-container032">
+              <div class="show-deps-container033">
+                <span class="show-deps-text24">адрес:</span>
+                <span class="show-deps-text25">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="show-deps-container034">
+            <div class="show-deps-container035">
+              <div class="show-deps-container036">
+                <div class="show-deps-container037">
+                  <div class="show-deps-container038">
+                    <h4 class="show-deps-text26">Номер отделения:</h4>
+                    <span class="show-deps-text27">123456789</span>
+                  </div>
+                </div>
+                <div class="show-deps-container039">
+                  <div class="show-deps-container040">
+                    <span class="show-deps-text28">Название:</span>
+                    <span class="show-deps-text29">Рога и копыта</span>
+                  </div>
+                </div>
+                <div class="show-deps-container041">
+                  <form action="del-dep.html" class="show-deps-form04">
+                    <button class="show-deps-button04 button">-</button>
+                  </form>
+                  <form action="alter-dep.html" class="show-deps-form05">
+                    <button class="show-deps-button05 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-deps-container042">
+              <div class="show-deps-container043">
+                <span class="show-deps-text30">адрес:</span>
+                <span class="show-deps-text31">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="show-deps-container044">
+            <div class="show-deps-container045">
+              <div class="show-deps-container046">
+                <div class="show-deps-container047">
+                  <div class="show-deps-container048">
+                    <h4 class="show-deps-text32">Номер отделения:</h4>
+                    <span class="show-deps-text33">123456789</span>
+                  </div>
+                </div>
+                <div class="show-deps-container049">
+                  <div class="show-deps-container050">
+                    <span class="show-deps-text34">Название:</span>
+                    <span class="show-deps-text35">Рога и копыта</span>
+                  </div>
+                </div>
+                <div class="show-deps-container051">
+                  <form action="del-dep.html" class="show-deps-form06">
+                    <button class="show-deps-button06 button">-</button>
+                  </form>
+                  <form action="alter-dep.html" class="show-deps-form07">
+                    <button class="show-deps-button07 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-deps-container052">
+              <div class="show-deps-container053">
+                <span class="show-deps-text36">адрес:</span>
+                <span class="show-deps-text37">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="show-deps-container054">
+            <div class="show-deps-container055">
+              <div class="show-deps-container056">
+                <div class="show-deps-container057">
+                  <div class="show-deps-container058">
+                    <h4 class="show-deps-text38">Номер отделения:</h4>
+                    <span class="show-deps-text39">123456789</span>
+                  </div>
+                </div>
+                <div class="show-deps-container059">
+                  <div class="show-deps-container060">
+                    <span class="show-deps-text40">Название:</span>
+                    <span class="show-deps-text41">Рога и копыта</span>
+                  </div>
+                </div>
+                <div class="show-deps-container061">
+                  <form action="del-dep.html" class="show-deps-form08">
+                    <button class="show-deps-button08 button">-</button>
+                  </form>
+                  <form action="alter-dep.html" class="show-deps-form09">
+                    <button class="show-deps-button09 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-deps-container062">
+              <div class="show-deps-container063">
+                <span class="show-deps-text42">адрес:</span>
+                <span class="show-deps-text43">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="show-deps-container064">
+            <div class="show-deps-container065">
+              <div class="show-deps-container066">
+                <div class="show-deps-container067">
+                  <div class="show-deps-container068">
+                    <h4 class="show-deps-text44">Номер отделения:</h4>
+                    <span class="show-deps-text45">123456789</span>
+                  </div>
+                </div>
+                <div class="show-deps-container069">
+                  <div class="show-deps-container070">
+                    <span class="show-deps-text46">Название:</span>
+                    <span class="show-deps-text47">Рога и копыта</span>
+                  </div>
+                </div>
+                <div class="show-deps-container071">
+                  <form action="del-dep.html" class="show-deps-form10">
+                    <button class="show-deps-button10 button">-</button>
+                  </form>
+                  <form action="alter-dep.html" class="show-deps-form11">
+                    <button class="show-deps-button11 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-deps-container072">
+              <div class="show-deps-container073">
+                <span class="show-deps-text48">адрес:</span>
+                <span class="show-deps-text49">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="show-deps-container074">
+            <div class="show-deps-container075">
+              <div class="show-deps-container076">
+                <div class="show-deps-container077">
+                  <div class="show-deps-container078">
+                    <h4 class="show-deps-text50">Номер отделения:</h4>
+                    <span class="show-deps-text51">123456789</span>
+                  </div>
+                </div>
+                <div class="show-deps-container079">
+                  <div class="show-deps-container080">
+                    <span class="show-deps-text52">Название:</span>
+                    <span class="show-deps-text53">Рога и копыта</span>
+                  </div>
+                </div>
+                <div class="show-deps-container081">
+                  <form action="del-dep.html" class="show-deps-form12">
+                    <button class="show-deps-button12 button">-</button>
+                  </form>
+                  <form action="alter-dep.html" class="show-deps-form13">
+                    <button class="show-deps-button13 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-deps-container082">
+              <div class="show-deps-container083">
+                <span class="show-deps-text54">адрес:</span>
+                <span class="show-deps-text55">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="show-deps-container084">
+            <div class="show-deps-container085">
+              <div class="show-deps-container086">
+                <div class="show-deps-container087">
+                  <div class="show-deps-container088">
+                    <h4 class="show-deps-text56">Номер отделения:</h4>
+                    <span class="show-deps-text57">123456789</span>
+                  </div>
+                </div>
+                <div class="show-deps-container089">
+                  <div class="show-deps-container090">
+                    <span class="show-deps-text58">Название:</span>
+                    <span class="show-deps-text59">Рога и копыта</span>
+                  </div>
+                </div>
+                <div class="show-deps-container091">
+                  <form action="del-dep.html" class="show-deps-form14">
+                    <button class="show-deps-button14 button">-</button>
+                  </form>
+                  <form action="alter-dep.html" class="show-deps-form15">
+                    <button class="show-deps-button15 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-deps-container092">
+              <div class="show-deps-container093">
+                <span class="show-deps-text60">адрес:</span>
+                <span class="show-deps-text61">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="show-deps-container094">
+            <div class="show-deps-container095">
+              <div class="show-deps-container096">
+                <div class="show-deps-container097">
+                  <div class="show-deps-container098">
+                    <h4 class="show-deps-text62">Номер отделения:</h4>
+                    <span class="show-deps-text63">123456789</span>
+                  </div>
+                </div>
+                <div class="show-deps-container099">
+                  <div class="show-deps-container100">
+                    <span class="show-deps-text64">Название:</span>
+                    <span class="show-deps-text65">Рога и копыта</span>
+                  </div>
+                </div>
+                <div class="show-deps-container101">
+                  <form action="del-dep.html" class="show-deps-form16">
+                    <button class="show-deps-button16 button">-</button>
+                  </form>
+                  <form action="alter-dep.html" class="show-deps-form17">
+                    <button class="show-deps-button17 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-deps-container102">
+              <div class="show-deps-container103">
+                <span class="show-deps-text66">адрес:</span>
+                <span class="show-deps-text67">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="show-deps-container104">
+            <div class="show-deps-container105">
+              <div class="show-deps-container106">
+                <div class="show-deps-container107">
+                  <div class="show-deps-container108">
+                    <h4 class="show-deps-text68">Номер отделения:</h4>
+                    <span class="show-deps-text69">123456789</span>
+                  </div>
+                </div>
+                <div class="show-deps-container109">
+                  <div class="show-deps-container110">
+                    <span class="show-deps-text70">Название:</span>
+                    <span class="show-deps-text71">Рога и копыта</span>
+                  </div>
+                </div>
+                <div class="show-deps-container111">
+                  <form action="del-dep.html" class="show-deps-form18">
+                    <button class="show-deps-button18 button">-</button>
+                  </form>
+                  <form action="alter-dep.html" class="show-deps-form19">
+                    <button class="show-deps-button19 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-deps-container112">
+              <div class="show-deps-container113">
+                <span class="show-deps-text72">адрес:</span>
+                <span class="show-deps-text73">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="show-deps-container114">
+            <div class="show-deps-container115">
+              <div class="show-deps-container116">
+                <div class="show-deps-container117">
+                  <div class="show-deps-container118">
+                    <h4 class="show-deps-text74">Номер отделения:</h4>
+                    <span class="show-deps-text75">123456789</span>
+                  </div>
+                </div>
+                <div class="show-deps-container119">
+                  <div class="show-deps-container120">
+                    <span class="show-deps-text76">Название:</span>
+                    <span class="show-deps-text77">Рога и копыта</span>
+                  </div>
+                </div>
+                <div class="show-deps-container121">
+                  <form action="del-dep.html" class="show-deps-form20">
+                    <button class="show-deps-button20 button">-</button>
+                  </form>
+                  <form action="alter-dep.html" class="show-deps-form21">
+                    <button class="show-deps-button21 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-deps-container122">
+              <div class="show-deps-container123">
+                <span class="show-deps-text78">адрес:</span>
+                <span class="show-deps-text79">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="show-deps-container124">
+            <div class="show-deps-container125">
+              <div class="show-deps-container126">
+                <div class="show-deps-container127">
+                  <div class="show-deps-container128">
+                    <h4 class="show-deps-text80">Номер отделения:</h4>
+                    <span class="show-deps-text81">123456789</span>
+                  </div>
+                </div>
+                <div class="show-deps-container129">
+                  <div class="show-deps-container130">
+                    <span class="show-deps-text82">Название:</span>
+                    <span class="show-deps-text83">Рога и копыта</span>
+                  </div>
+                </div>
+                <div class="show-deps-container131">
+                  <form action="del-dep.html" class="show-deps-form22">
+                    <button class="show-deps-button22 button">-</button>
+                  </form>
+                  <form action="alter-dep.html" class="show-deps-form23">
+                    <button class="show-deps-button23 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-deps-container132">
+              <div class="show-deps-container133">
+                <span class="show-deps-text84">адрес:</span>
+                <span class="show-deps-text85">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="show-deps-container134">
+            <div class="show-deps-container135">
+              <div class="show-deps-container136">
+                <div class="show-deps-container137">
+                  <div class="show-deps-container138">
+                    <h4 class="show-deps-text86">Номер отделения:</h4>
+                    <span class="show-deps-text87">123456789</span>
+                  </div>
+                </div>
+                <div class="show-deps-container139">
+                  <div class="show-deps-container140">
+                    <span class="show-deps-text88">Название:</span>
+                    <span class="show-deps-text89">Рога и копыта</span>
+                  </div>
+                </div>
+                <div class="show-deps-container141">
+                  <form action="del-dep.html" class="show-deps-form24">
+                    <button class="show-deps-button24 button">-</button>
+                  </form>
+                  <form action="alter-dep.html" class="show-deps-form25">
+                    <button class="show-deps-button25 button">Ред.</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="show-deps-container142">
+              <div class="show-deps-container143">
+                <span class="show-deps-text90">адрес:</span>
+                <span class="show-deps-text91">
+                  Российская Федерация, Новосибирская область, г. Бердск,
+                  Территория, изъятая из земель подсобного хозяйства Всесоюзного
+                  центрального совета профессиональных союзов, для организации
+                  крестьянского хозяйства, дом 17
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

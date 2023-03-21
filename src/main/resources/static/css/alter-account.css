@@ -1,0 +1,301 @@
+.alter-account-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.alter-account-container01 {
+  flex: 0 0 auto;
+  width: 70%;
+  height: auto;
+  display: flex;
+  align-self: center;
+  margin-top: var(--dl-space-space-fiveunits);
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.alter-account-text {
+  align-self: center;
+  margin-top: 0px;
+  font-family: Comic Sans MS;
+  margin-left: 0px;
+}
+.alter-account-container02 {
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: var(--dl-space-space-oneandhalfunits);
+  align-items: center;
+  padding-top: var(--dl-space-space-halfunit);
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  padding-left: var(--dl-space-space-unit);
+  padding-right: var(--dl-space-space-unit);
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-twounits);
+  justify-content: flex-start;
+}
+.alter-account-container03 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  padding-top: var(--dl-space-space-halfunit);
+  padding-left: var(--dl-space-space-halfunit);
+  padding-right: var(--dl-space-space-halfunit);
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-halfunit);
+}
+.alter-account-text03 {
+  font-size: 20px;
+}
+.alter-account-text04 {
+  font-size: 16px;
+  margin-left: var(--dl-space-space-twounits);
+}
+.alter-account-container04 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  padding-top: var(--dl-space-space-halfunit);
+  padding-left: var(--dl-space-space-halfunit);
+  padding-right: var(--dl-space-space-halfunit);
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-halfunit);
+}
+.alter-account-text05 {
+  font-size: 20px;
+}
+.alter-account-text06 {
+  font-size: 16px;
+  margin-left: var(--dl-space-space-twounits);
+}
+.alter-account-container05 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  padding-top: var(--dl-space-space-halfunit);
+  padding-left: var(--dl-space-space-halfunit);
+  padding-right: var(--dl-space-space-halfunit);
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-halfunit);
+}
+.alter-account-text07 {
+  font-size: 20px;
+}
+.alter-account-text08 {
+  font-size: 16px;
+  margin-left: var(--dl-space-space-twounits);
+}
+.alter-account-container06 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  padding-top: var(--dl-space-space-halfunit);
+  padding-left: var(--dl-space-space-halfunit);
+  padding-right: var(--dl-space-space-halfunit);
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-halfunit);
+}
+.alter-account-text09 {
+  font-size: 20px;
+}
+.alter-account-text10 {
+  font-size: 16px;
+  margin-left: var(--dl-space-space-twounits);
+}
+.alter-account-container07 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  padding-top: var(--dl-space-space-halfunit);
+  padding-left: var(--dl-space-space-halfunit);
+  padding-right: var(--dl-space-space-halfunit);
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-halfunit);
+}
+.alter-account-text13 {
+  font-size: 20px;
+}
+.alter-account-text14 {
+  font-size: 16px;
+  margin-left: var(--dl-space-space-twounits);
+}
+.alter-account-container08 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  padding-top: var(--dl-space-space-halfunit);
+  padding-left: var(--dl-space-space-halfunit);
+  padding-right: var(--dl-space-space-halfunit);
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-halfunit);
+}
+.alter-account-text17 {
+  font-size: 20px;
+}
+.alter-account-text18 {
+  font-size: 16px;
+  margin-left: var(--dl-space-space-twounits);
+}
+.alter-account-container09 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  padding-top: var(--dl-space-space-halfunit);
+  padding-left: var(--dl-space-space-halfunit);
+  padding-right: var(--dl-space-space-halfunit);
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-halfunit);
+}
+.alter-account-text21 {
+  font-size: 20px;
+}
+.alter-account-text22 {
+  font-size: 16px;
+  margin-left: var(--dl-space-space-twounits);
+}
+.alter-account-container10 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: center;
+  margin-left: 0px;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.alter-account-text25 {
+  font-size: 30px;
+  font-style: normal;
+  font-family: Comic Sans MS;
+  font-weight: 400;
+  margin-left: var(--dl-space-space-halfunit);
+}
+.alter-account-textinput {
+  width: 329px;
+  height: 70%;
+  text-align: center;
+  font-family: Arial;
+  margin-left: var(--dl-space-space-halfunit);
+  padding-top: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 2px;
+}
+.alter-account-container11 {
+  gap: var(--dl-space-space-oneandhalfunits);
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  padding-top: var(--dl-space-space-unit);
+  justify-content: center;
+}
+.alter-account-form {
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.alter-account-button {
+  color: rgb(0, 0, 0);
+  width: var(--dl-size-size-large);
+  height: auto;
+  padding: 4px;
+  font-size: 16px;
+  align-self: center;
+  margin-top: 0px;
+  text-align: center;
+  transition: 0.3s;
+  font-family: Comic Sans MS;
+  border-radius: 20px;
+  background-color: #cacaca;
+}
+.alter-account-button:hover {
+  background-color: rgba(0, 62, 179, 0.43);
+}
+.alter-account-button:active {
+  border-radius: 20px;
+  background-color: var(--dl-color-primary-300);
+}
+.alter-account-form1 {
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.alter-account-button1 {
+  color: rgb(0, 0, 0);
+  width: var(--dl-size-size-large);
+  height: auto;
+  padding: 4px;
+  font-size: 16px;
+  align-self: center;
+  margin-top: 0px;
+  text-align: center;
+  transition: 0.3s;
+  font-family: Comic Sans MS;
+  border-radius: 20px;
+  background-color: #cacaca;
+}
+.alter-account-button1:hover {
+  background-color: rgba(0, 62, 179, 0.43);
+}
+.alter-account-button1:active {
+  border-radius: 20px;
+  background-color: var(--dl-color-primary-300);
+}
+.alter-account-form2 {
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.alter-account-button2 {
+  color: rgb(0, 0, 0);
+  width: var(--dl-size-size-large);
+  height: auto;
+  padding: 4px;
+  font-size: 16px;
+  align-self: center;
+  margin-top: 0px;
+  text-align: center;
+  transition: 0.3s;
+  font-family: Comic Sans MS;
+  border-radius: 20px;
+  background-color: #cacaca;
+}
+.alter-account-button2:hover {
+  background-color: rgba(0, 62, 179, 0.43);
+}
+.alter-account-button2:active {
+  border-radius: 20px;
+  background-color: var(--dl-color-primary-300);
+}

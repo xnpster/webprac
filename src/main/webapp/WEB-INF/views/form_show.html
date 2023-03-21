@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>My app</title>
+</head>
+
+<body>
+
+<h1>Result</h1>
+<p th:text="'id1: ' + ${formExample1.s}" />
+<p th:text="'id2: ' + ${formExample2.s}" />
+<p th:text="'checkbox1: ' + ${formExample1.getStringCheckboxes()}" />
+
+</body>
+
+</html>
