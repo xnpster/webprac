@@ -15,6 +15,7 @@
 /home/xnpst/IdeaProjects/webapp/src/main/java/com/jabaprac/webapp/dbobjects/Account_types.java
 /home/xnpst/IdeaProjects/webapp/src/main/java/com/jabaprac/webapp/TestBean.java
 /home/xnpst/IdeaProjects/webapp/src/main/java/com/jabaprac/webapp/pageconf/PageConfiguration.java
+/home/xnpst/IdeaProjects/webapp/src/main/java/com/jabaprac/webapp/pageconf/AccountConfiguration.java
 /home/xnpst/IdeaProjects/webapp/src/main/java/com/jabaprac/webapp/dbobjects/Branches.java
 /home/xnpst/IdeaProjects/webapp/src/main/java/com/jabaprac/webapp/pageconf/ClientConfiguration.java
 /home/xnpst/IdeaProjects/webapp/src/main/java/com/jabaprac/webapp/TransactionManagerTest.java

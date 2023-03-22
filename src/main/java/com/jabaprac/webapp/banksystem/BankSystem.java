@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
+import java.sql.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -134,6 +134,14 @@ public class BankSystem {
         return em.find(Clients.class, id);
     }
 
+    public Branches branchById(Long id) {
+        return em.find(Branches.class, id);
+    }
+
+    public Account_types accountTypeById(Long id) {
+        return em.find(Account_types.class, id);
+    }
+
     public void removeClient(Clients client) {
         em.getTransaction().begin();
         em.remove(client);
@@ -217,5 +225,26 @@ public class BankSystem {
         }
 
         return toReturn;
+    }
+
+    public Accounts persistAccount(AccountConfiguration conf) {
+        Accounts account = new Accounts();
+        account.setBalance(conf.getStartSum());
+        account.setBranch(branchById(conf.getDepNo()));
+        account.setClient(clientById(conf.getClientNo()));
+        account.setType(accountTypeById(conf.getAccountType()));
+        account.setType(accountTypeById(conf.getAccountType()));
+
+        long millis = System.currentTimeMillis();
+        Date today = new Date(millis);
+
+        account.setOpen_date(today);
+        account.setClose_date(null);
+
+        em.getTransaction().begin();
+        em.persist(account);
+        em.getTransaction().commit();
+
+        return account;
     }
 }

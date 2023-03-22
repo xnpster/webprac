@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>add-account-success - Growing Attached Coyote</title>
+    <meta
+      property="og:title"
+      content="add-account-success - Growing Attached Coyote"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <!--This is the head section-->
+    <!-- <style> ... </style> -->
+    <style data-section-id="dropdown">
+      [data-thq="thq-dropdown"]:hover > [data-thq="thq-dropdown-list"] {
+          display: flex;
+        }
+
+        [data-thq="thq-dropdown"]:hover > div [data-thq="thq-dropdown-arrow"] {
+          transform: rotate(90deg);
+        }
+    </style>
+    <link rel="stylesheet" th:href="@{/styles/css/style.css}" />
+  </head>
+  <body>
+    <div>
+      <link th:href="@{/styles/css/add-account-success.css}" rel="stylesheet" />
+
+      <div class="add-account-success-container">
+        <div class="add-account-success-container01">
+          <div class="add-account-success-container02">
+            <span class="add-account-success-text">Счёт успешно открыт</span>
+          </div>
+          <div class="add-account-success-container03">
+            <span class="add-account-success-text01">Номер:</span>
+            <span class="add-account-success-text02" th:text="${account.getId()}">12345689</span>
+          </div>
+          <div class="add-account-success-container04">
+            <span class="add-account-success-text03">Номер отделения:</span>
+            <span class="add-account-success-text04" th:text="${account.getBranch().getId()}">123456789</span>
+          </div>
+          <div class="add-account-success-container05">
+            <span class="add-account-success-text05">Тип счёта:</span>
+            <span class="add-account-success-text06" th:text="${account.getType().getName()}">Тип счёта 1</span>
+          </div>
+          <div class="add-account-success-container06">
+            <span class="add-account-success-text07">Начальная сумма:</span>
+            <span class="add-account-success-text08">
+              <span th:text="${account.getBalance()}">0</span>
+              <br />
+            </span>
+          </div>
+          <div class="add-account-success-container07">
+            <span class="add-account-success-text11">Номер клиента:</span>
+            <span class="add-account-success-text12">
+              <span th:text="${account.getClient().getId()}">123456789</span>
+              <br />
+            </span>
+          </div>
+          <div class="add-account-success-container08">
+            <span class="add-account-success-text15">
+              ФИО/название владельца:
+            </span>
+            <span class="add-account-success-text16">
+              <span th:text="${account.getClient().getName()}">Иванов Иван Иванович</span>
+              <br />
+            </span>
+          </div>
+          <div class="add-account-success-container09">
+            <span class="add-account-success-text19">Дата открытия:</span>
+            <span class="add-account-success-text20">
+              <span th:text="${account.getOpen_date().toString()}">01.01.2000</span>
+              <br />
+            </span>
+          </div>
+          <div class="add-account-success-container10">
+            <form th:action="@{/show-accounts}" class="add-account-success-form" method="get">
+              <button type="submit" class="add-account-success-button button">
+                <span>
+                  <span>К счетам</span>
+                  <br />
+                </span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

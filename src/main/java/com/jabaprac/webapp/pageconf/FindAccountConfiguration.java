@@ -75,6 +75,10 @@ public class FindAccountConfiguration extends PageConfiguration {
                 '}';
     }
 
+    String verify() {
+        return null;
+    }
+
     public boolean isAllowAccountTypesId() {
         return allowAccountTypesId;
     }

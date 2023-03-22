@@ -1,0 +1,277 @@
+.add-account-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.add-account-container01 {
+  flex: 0 0 auto;
+  width: 70%;
+  height: var(--dl-size-size-xxlarge);
+  display: flex;
+  align-self: center;
+  margin-top: var(--dl-space-space-fiveunits);
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.add-account-text {
+  align-self: center;
+  margin-top: 0px;
+  font-family: Comic Sans MS;
+  margin-left: 0px;
+}
+.add-account-container02 {
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: var(--dl-space-space-oneandhalfunits);
+  align-items: center;
+  padding-top: var(--dl-space-space-halfunit);
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  padding-left: var(--dl-space-space-unit);
+  padding-right: var(--dl-space-space-unit);
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-twounits);
+  justify-content: flex-start;
+}
+.add-account-container03 {
+  gap: var(--dl-space-space-halfunit);
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: center;
+  margin-left: var(--dl-space-space-oneandhalfunits);
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.add-account-text03 {
+  font-size: 30px;
+  font-family: Comic Sans MS;
+  margin-left: var(--dl-space-space-halfunit);
+}
+.add-account-textinput {
+  width: var(--dl-size-size-xxlarge);
+  height: 70%;
+  text-align: center;
+  font-family: Arial;
+  margin-left: 0px;
+  padding-top: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 2px;
+}
+.add-account-form {
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.add-account-button {
+  color: rgb(0, 0, 0);
+  width: var(--dl-size-size-large);
+  height: auto;
+  padding: 4px;
+  font-size: 16px;
+  align-self: center;
+  margin-top: 0px;
+  text-align: center;
+  transition: 0.3s;
+  font-family: Comic Sans MS;
+  border-radius: 20px;
+  background-color: #cacaca;
+}
+.add-account-button:hover {
+  background-color: rgba(0, 62, 179, 0.43);
+}
+.add-account-button:active {
+  border-radius: 20px;
+  background-color: var(--dl-color-primary-300);
+}
+.add-account-container04 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: center;
+  margin-left: var(--dl-space-space-oneandhalfunits);
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.add-account-text07 {
+  font-size: 30px;
+  font-family: Comic Sans MS;
+  margin-left: var(--dl-space-space-halfunit);
+}
+.add-account-textinput1 {
+  width: var(--dl-size-size-xxlarge);
+  height: 70%;
+  text-align: center;
+  font-family: Arial;
+  margin-left: var(--dl-space-space-halfunit);
+  padding-top: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 2px;
+}
+.add-account-container05 {
+  gap: var(--dl-space-space-oneandhalfunits);
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: center;
+  margin-left: var(--dl-space-space-twounits);
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.add-account-text08 {
+  font-size: 30px;
+  align-self: center;
+  font-family: Comic Sans MS;
+  margin-left: var(--dl-space-space-halfunit);
+}
+.add-account-container06 {
+  gap: 4;
+  width: var(--dl-size-size-xxlarge);
+  height: var(--dl-size-size-medium);
+  display: flex;
+  align-self: center;
+  align-items: stretch;
+  margin-left: 0px;
+  border-color: #838383;
+  border-width: 1px;
+  margin-right: 0px;
+  padding-left: var(--dl-space-space-halfunit);
+  padding-right: var(--dl-space-space-halfunit);
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.add-account-container07 {
+  width: 100%;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.add-account-text09 {
+  font-family: Comic Sans MS;
+  margin-left: var(--dl-space-space-halfunit);
+}
+.add-account-container08 {
+  width: 100%;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.add-account-text10 {
+  font-family: Comic Sans MS;
+  margin-left: var(--dl-space-space-halfunit);
+}
+.add-account-container09 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: center;
+  margin-left: var(--dl-space-space-oneandhalfunits);
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.add-account-text11 {
+  font-size: 30px;
+  font-family: Comic Sans MS;
+  margin-left: var(--dl-space-space-halfunit);
+}
+.add-account-textinput2 {
+  width: var(--dl-size-size-xxlarge);
+  height: 70%;
+  text-align: center;
+  font-family: Arial;
+  margin-left: var(--dl-space-space-halfunit);
+  padding-top: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 2px;
+}
+.add-account-container10 {
+  gap: var(--dl-space-space-oneandhalfunits);
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  padding-top: var(--dl-space-space-unit);
+  justify-content: center;
+}
+.add-account-form1 {
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.add-account-button1 {
+  color: rgb(0, 0, 0);
+  width: var(--dl-size-size-large);
+  height: auto;
+  padding: 4px;
+  font-size: 16px;
+  align-self: center;
+  margin-top: 0px;
+  text-align: center;
+  transition: 0.3s;
+  font-family: Comic Sans MS;
+  border-radius: 20px;
+  background-color: #cacaca;
+}
+.add-account-button1:hover {
+  background-color: rgba(0, 62, 179, 0.43);
+}
+.add-account-button1:active {
+  border-radius: 20px;
+  background-color: var(--dl-color-primary-300);
+}
+.add-account-form2 {
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-top: 0px;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.add-account-button2 {
+  color: rgb(0, 0, 0);
+  width: var(--dl-size-size-large);
+  height: auto;
+  padding: 4px;
+  font-size: 16px;
+  align-self: center;
+  margin-top: 0px;
+  text-align: center;
+  transition: 0.3s;
+  font-family: Comic Sans MS;
+  border-radius: 20px;
+  background-color: #cacaca;
+}
+.add-account-button2:hover {
+  background-color: rgba(0, 62, 179, 0.43);
+}
+.add-account-button2:active {
+  border-radius: 20px;
+  background-color: var(--dl-color-primary-300);
+}

@@ -43,6 +43,10 @@ public class FindClientConfiguration extends PageConfiguration{
         this.setDefault();
     }
 
+    String verify() {
+        return null;
+    }
+
     @Override
     void setDefault() {
         type = ClientType.ALL.getValue();

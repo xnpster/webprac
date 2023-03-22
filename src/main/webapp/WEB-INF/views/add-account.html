@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>add-account - Growing Attached Coyote</title>
+    <meta property="og:title" content="add-account - Growing Attached Coyote" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <!--This is the head section-->
+    <!-- <style> ... </style> -->
+    <style data-section-id="dropdown">
+      [data-thq="thq-dropdown"]:hover > [data-thq="thq-dropdown-list"] {
+          display: flex;
+        }
+
+        [data-thq="thq-dropdown"]:hover > div [data-thq="thq-dropdown-arrow"] {
+          transform: rotate(90deg);
+        }
+    </style>
+    <link rel="stylesheet" th:href="@{/styles/css/style.css}" />
+  </head>
+  <body>
+    <div>
+      <link th:href="@{/styles/css/add-account.css}" rel="stylesheet" />
+
+      <div class="add-account-container">
+        <div class="add-account-container01">
+          <h1 class="add-account-text">
+            <span>Добавление нового счёта</span>
+            <br />
+          </h1>
+          <div class="add-account-container02">
+            <div class="add-account-container03">
+              <span class="add-account-text03">Номер клиента</span>
+              <input
+                type="text"
+                form="add"
+                th:field="*{pageConf.clientNo}"
+                th:value="${pageConf.getClientNo()}"
+                class="add-account-textinput input"
+              />
+              <form th:action="@{/add-client}" class="add-account-form">
+                <button type="submit" class="add-account-button button">
+                  <span>
+                    <span>создать клиента</span>
+                    <br />
+                  </span>
+                </button>
+              </form>
+            </div>
+            <div class="add-account-container04">
+              <span class="add-account-text07">Номер отделения</span>
+              <input
+                type="text"
+                form="add"
+                th:field="*{pageConf.depNo}"
+                th:value="${pageConf.getDepNo()}"
+                class="add-account-textinput1 input"
+              />
+            </div>
+            <div class="add-account-container05">
+              <span class="add-account-text08">Тип счёта</span>
+              <div style="overflow-y: scroll;" class="add-account-container06">
+                <div class="add-account-container07" th:each="e: ${bank.getAllAccountTypes()}">
+                  <input
+                    type="radio"
+                    id="rad-add-acc-type_1"
+                    name="rad-add-acc-type"
+                    th:field="*{pageConf.accountType}"
+                    th:value="${e.id}"
+                    form="add"
+                    th:checked="${pageConf.getAccountType() != null && pageConf.getAccountType() == e.id}"
+                  />
+                  <span class="add-account-text09" th:text="${e.name}" >Вид счёта 1</span>
+                </div>
+              </div>
+            </div>
+            <div class="add-account-container09">
+              <span class="add-account-text11">Начальная сумма</span>
+              <input
+                type="text"
+                value="0"
+                form="add"
+                th:field="*{pageConf.startSum}"
+                th:value="${pageConf.getStartSum()}"
+                class="add-account-textinput2 input"
+              />
+            </div>
+            <div class="add-account-container10">
+              <form id="add" th:action="@{try-add-account}" class="add-account-form1" method="post">
+                <button type="submit" class="add-account-button1 button">
+                  <span>
+                    <span>Открыть</span>
+                    <br />
+                  </span>
+                </button>
+              </form>
+              <form th:action="@{/show-accounts}" class="add-account-form2" method="get">
+                <button type="submit" class="add-account-button2 button">
+                  <span>
+                    <span>К счетам</span>
+                    <br />
+                  </span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

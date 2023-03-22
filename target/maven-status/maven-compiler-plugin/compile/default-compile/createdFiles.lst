@@ -11,6 +11,7 @@ com/jabaprac/webapp/pageconf/FindClientConfiguration.class
 com/jabaprac/webapp/ResourceManager.class
 com/jabaprac/webapp/pageconf/PageConfiguration.class
 com/jabaprac/webapp/dbobjects/History_.class
+com/jabaprac/webapp/pageconf/AccountConfiguration.class
 com/jabaprac/webapp/App.class
 com/jabaprac/webapp/TransactionManagerTest.class
 com/jabaprac/webapp/MainController.class

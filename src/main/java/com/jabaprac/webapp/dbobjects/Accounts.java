@@ -4,11 +4,18 @@ import jakarta.persistence.*;
 
 import java.sql.Date;
 
+import static jakarta.persistence.GenerationType.SEQUENCE;
+
 @Entity(name = "Accounts")
 @Table(name = "\"Accounts\"")
 public class Accounts {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = SEQUENCE, generator = "acc-id-gen")
+    @SequenceGenerator(
+            name = "acc-id-gen",
+            sequenceName = "\"Accounts_id_seq\"",
+            allocationSize = 1
+    )
     @Column(name="id")
     private Long id;
 
@@ -25,7 +32,7 @@ public class Accounts {
     private Account_types type;
 
     @Column(name="balance")
-    private int balance;
+    private Long balance;
 
     @Column(name="open_date")
     private Date open_date;
@@ -65,11 +72,11 @@ public class Accounts {
         this.type = type;
     }
 
-    public int getBalance() {
+    public Long getBalance() {
         return balance;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(Long balance) {
         this.balance = balance;
     }
 

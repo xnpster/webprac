@@ -234,7 +234,7 @@ public class MainController {
     }
 
     @PostMapping("/add-client")
-    public String addClientGet(@ModelAttribute(name="pageConf") ClientConfiguration conf, Model mod) {
+    public String addClientPost(@ModelAttribute(name="pageConf") ClientConfiguration conf, Model mod) {
         mod.addAttribute("pageConf", conf);
 
         mod.addAttribute("clientTypeAll", ClientType.ALL);
@@ -388,5 +388,73 @@ public class MainController {
 
         return "show-accounts";
 //        return "page_configuration";
+    }
+
+    @GetMapping("/add-account")
+    public String addAccountGet(Model mod,
+                                @RequestParam(value = "client", required = false) Long clientNo,
+                                @RequestParam(value = "branch", required = false) Long depNo) {
+        AccountConfiguration defaultConf = new AccountConfiguration();
+
+        if(clientNo != null)
+            defaultConf.setClientNo(clientNo);
+
+        if(depNo != null)
+            defaultConf.setDepNo(depNo);
+
+        mod.addAttribute("pageConf", defaultConf);
+        mod.addAttribute("bank", bank);
+
+        return "add-account";
+    }
+
+    @PostMapping("/add-account")
+    public String addAccountPost(@ModelAttribute(name="pageConf") AccountConfiguration conf, Model mod) {
+        mod.addAttribute("pageConf", conf);
+        mod.addAttribute("bank", bank);
+
+        return "add-account";
+    }
+
+    @PostMapping("/try-add-account")
+    public String tryAddAccountPost(@ModelAttribute(name="pageConf") AccountConfiguration conf, Model mod) {
+        boolean errorOccured = false;
+        Accounts added = null;
+
+        String err = conf.verify(bank);
+        errorOccured = err != null;
+
+        if(!errorOccured) {
+            try {
+                added = bank.persistAccount(conf);
+                if(added == null) {
+                    errorOccured = true;
+                    err = "Undefined error on saving account info";
+                }
+            } catch (Exception e) {
+                errorOccured = true;
+                err = e.getMessage();
+            }
+        }
+
+        if(errorOccured) {
+            mod.addAttribute("pageConf", conf);
+            mod.addAttribute("ErrorMessage", err);
+
+            String accountTypeName = null;
+            if(conf.getAccountType() != null) {
+                Account_types accountType = bank.accountTypeById(conf.getAccountType());
+                if(accountType != null)
+                    accountTypeName = accountType.getName();
+            }
+
+            mod.addAttribute("accountTypeName", accountTypeName == null ? "Неопределённый тип" : accountTypeName);
+
+            return "add-account-fail";
+        } else {
+            mod.addAttribute("account", added);
+
+            return "add-account-success";
+        }
     }
 }
