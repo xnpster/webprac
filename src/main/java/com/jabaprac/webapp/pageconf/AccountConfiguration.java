@@ -55,6 +55,9 @@ public class AccountConfiguration extends PageConfiguration {
         if(getStartSum() == null)
             return "Не указана начальная сумма";
 
+        if(getStartSum() < accountType.getCredit_limit())
+            return "недопустимая сумма";
+
         return null;
     }
 

@@ -142,9 +142,24 @@ public class BankSystem {
         return em.find(Account_types.class, id);
     }
 
+    public Accounts accountById(Long id) {
+        return em.find(Accounts.class, id);
+    }
+
     public void removeClient(Clients client) {
         em.getTransaction().begin();
         em.remove(client);
+        em.getTransaction().commit();
+    }
+
+    public void removeAccount(Accounts account) {
+        long millis = System.currentTimeMillis();
+        Date today = new Date(millis);
+
+        account.setClose_date(today);
+
+        em.getTransaction().begin();
+        em.persist(account);
         em.getTransaction().commit();
     }
 
@@ -233,7 +248,6 @@ public class BankSystem {
         account.setBranch(branchById(conf.getDepNo()));
         account.setClient(clientById(conf.getClientNo()));
         account.setType(accountTypeById(conf.getAccountType()));
-        account.setType(accountTypeById(conf.getAccountType()));
 
         long millis = System.currentTimeMillis();
         Date today = new Date(millis);
@@ -246,5 +260,15 @@ public class BankSystem {
         em.getTransaction().commit();
 
         return account;
+    }
+
+    public String verifyAccountToClose(Accounts account) {
+        if(account == null)
+            return "Неопределённый счёт";
+
+        if(account.getClose_date() != null)
+            return "Счёт уже закрыт";
+
+        return null;
     }
 }

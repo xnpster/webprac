@@ -457,4 +457,72 @@ public class MainController {
             return "add-account-success";
         }
     }
+
+    @GetMapping("/del-account")
+    public String delAccountGet(Long id, Model mod) {
+        Accounts account = bank.accountById(id);
+
+        mod.addAttribute("account", account);
+        return "del-account";
+    }
+
+    @PostMapping("/try-del-account")
+    public String tryDelAccountPost(Long id, Model mod) {
+        Accounts account = bank.accountById(id);
+        mod.addAttribute("account", account);
+
+        String errMsg = bank.verifyAccountToClose(account);
+        boolean errorOccurred = (errMsg != null);
+
+        if(!errorOccurred) {
+            try {
+                bank.removeAccount(account);
+            } catch (Exception e) {
+                errorOccurred = true;
+                errMsg = "Ошибка при удалении данных из базы";
+            }
+        }
+
+        if(errorOccurred) {
+            mod.addAttribute("errorMessage", errMsg);
+            return "del-account-fail";
+        } else {
+            return "del-account-success";
+        }
+    }
+
+    @GetMapping("/alter-account")
+    public String alterAccountGet(Long id, Model mod) {
+        Accounts account = bank.accountById(id);
+
+        mod.addAttribute("account", account);
+        return "alter-account";
+    }
+
+    @PostMapping("/try-del-account")
+    public String tryAlterAccountPost(Long id, Model mod) {
+        Accounts account = bank.accountById(id);
+        mod.addAttribute("account", account);
+
+        String errMsg = bank.verifyAccountToClose(account);
+        boolean errorOccurred = (errMsg != null);
+
+        if(!errorOccurred) {
+            try {
+                bank.removeAccount(account);
+            } catch (Exception e) {
+                errorOccurred = true;
+                errMsg = "Ошибка при удалении данных из базы";
+            }
+        }
+
+        if(errorOccurred) {
+            mod.addAttribute("errorMessage", errMsg);
+            return "del-account-fail";
+        } else {
+            return "del-account-success";
+        }
+    }
+    
+
 }
