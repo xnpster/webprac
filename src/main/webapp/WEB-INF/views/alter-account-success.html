@@ -63,27 +63,27 @@
           </div>
           <div class="alter-account-success-container03">
             <span class="alter-account-success-text03">Номер:</span>
-            <span class="alter-account-success-text04">12345689</span>
+            <span class="alter-account-success-text04" th:text="${account.getId()}">12345689</span>
           </div>
           <div class="alter-account-success-container04">
             <span class="alter-account-success-text05">Номер отделения:</span>
-            <span class="alter-account-success-text06">123456789</span>
+            <span class="alter-account-success-text06" th:text="${account.getBranch().getId()}">123456789</span>
           </div>
           <div class="alter-account-success-container05">
             <span class="alter-account-success-text07">Тип счёта:</span>
-            <span class="alter-account-success-text08">Тип счёта 1</span>
+            <span class="alter-account-success-text08" th:text="${account.getType().getName()}">Тип счёта 1</span>
           </div>
           <div class="alter-account-success-container06">
             <span class="alter-account-success-text09">Текущий баланс:</span>
             <span class="alter-account-success-text10">
-              <span>0</span>
+              <span th:text="${account.getBalance()}">0</span>
               <br />
             </span>
           </div>
           <div class="alter-account-success-container07">
             <span class="alter-account-success-text13">Номер клиента:</span>
             <span class="alter-account-success-text14">
-              <span>123456789</span>
+              <span th:text="${account.getClient().getId()}">123456789</span>
               <br />
             </span>
           </div>
@@ -92,20 +92,20 @@
               ФИО/название владельца:
             </span>
             <span class="alter-account-success-text18">
-              <span>Иванов Иван Иванович</span>
+              <span th:text="${account.getClient().getName()}">Иванов Иван Иванович</span>
               <br />
             </span>
           </div>
           <div class="alter-account-success-container09">
             <span class="alter-account-success-text21">Дата открытия:</span>
             <span class="alter-account-success-text22">
-              <span>01.01.2000</span>
+              <span th:text="${account.getOpen_date().toString()}">01.01.2000</span>
               <br />
             </span>
           </div>
           <div class="alter-account-success-container10">
             <form
-              action="show-accounts.html"
+              th:action="@{/show-accounts}"
               class="alter-account-success-form"
             >
               <button type="submit" class="alter-account-success-button button">

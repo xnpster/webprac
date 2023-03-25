@@ -496,31 +496,33 @@ public class MainController {
         Accounts account = bank.accountById(id);
 
         mod.addAttribute("account", account);
+        mod.addAttribute("sum", null);
         return "alter-account";
     }
 
-    @PostMapping("/try-del-account")
-    public String tryAlterAccountPost(Long id, Model mod) {
+    @PostMapping("/alter-account")
+    public String alterAccountPost(Long id, Long sum, Model mod) {
+        Accounts account = bank.accountById(id);
+
+        mod.addAttribute("account", account);
+        mod.addAttribute("sum", sum);
+        return "alter-account";
+    }
+
+    @PostMapping("/try-alter-account")
+    public String tryAlterAccountPost(Long id, Long sum, Model mod) {
         Accounts account = bank.accountById(id);
         mod.addAttribute("account", account);
 
-        String errMsg = bank.verifyAccountToClose(account);
+        String errMsg = bank.performTransaction(account, sum);
         boolean errorOccurred = (errMsg != null);
-
-        if(!errorOccurred) {
-            try {
-                bank.removeAccount(account);
-            } catch (Exception e) {
-                errorOccurred = true;
-                errMsg = "Ошибка при удалении данных из базы";
-            }
-        }
 
         if(errorOccurred) {
             mod.addAttribute("errorMessage", errMsg);
-            return "del-account-fail";
+            mod.addAttribute("sum", sum);
+            return "alter-account-fail";
         } else {
-            return "del-account-success";
+            return "alter-account-success";
         }
     }
     

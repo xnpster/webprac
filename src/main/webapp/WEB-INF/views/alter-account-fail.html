@@ -62,34 +62,34 @@
           </div>
           <div class="alter-account-fail-container03">
             <span class="alter-account-fail-text01">Номер:</span>
-            <span class="alter-account-fail-text02">12345689</span>
+            <span class="alter-account-fail-text02" th:text="${account.getId()}">12345689</span>
           </div>
           <div class="alter-account-fail-container04">
             <span class="alter-account-fail-text03">Номер отделения:</span>
-            <span class="alter-account-fail-text04">123456789</span>
+            <span class="alter-account-fail-text04" th:text="${account.getBranch().getId()}">123456789</span>
           </div>
           <div class="alter-account-fail-container05">
             <span class="alter-account-fail-text05">Тип счёта:</span>
-            <span class="alter-account-fail-text06">Тип счёта 1</span>
+            <span class="alter-account-fail-text06" th:text="${account.getType().getName()}">Тип счёта 1</span>
           </div>
           <div class="alter-account-fail-container06">
             <span class="alter-account-fail-text07">Баланс:</span>
             <span class="alter-account-fail-text08">
-              <span>0</span>
+              <span th:text="${account.getBalance()}">0</span>
               <br />
             </span>
           </div>
           <div class="alter-account-fail-container07">
             <span class="alter-account-fail-text11">Сумма:</span>
             <span class="alter-account-fail-text12">
-              <span>0</span>
+              <span th:text="${sum}">0</span>
               <br />
             </span>
           </div>
           <div class="alter-account-fail-container08">
             <span class="alter-account-fail-text15">Номер клиента:</span>
             <span class="alter-account-fail-text16">
-              <span>123456789</span>
+              <span th:text="${account.getClient().getId()}">123456789</span>
               <br />
             </span>
           </div>
@@ -98,26 +98,28 @@
               ФИО/название владельца:
             </span>
             <span class="alter-account-fail-text20">
-              <span>Иванов Иван Иванович</span>
+              <span th:text="${account.getClient().getName()}">Иванов Иван Иванович</span>
               <br />
             </span>
           </div>
           <div class="alter-account-fail-container10">
             <span class="alter-account-fail-text23">Дата открытия:</span>
             <span class="alter-account-fail-text24">
-              <span>01.01.2000</span>
+              <span th:text="${account.getOpen_date().toString()}">01.01.2000</span>
               <br />
             </span>
           </div>
           <div class="alter-account-fail-container11">
             <span class="alter-account-fail-text27">Описание ошибки:</span>
             <span class="alter-account-fail-text28">
-              <span>Ошибка сервиса</span>
+              <span th:text="${errorMessage}">Ошибка сервиса</span>
               <br />
             </span>
           </div>
           <div class="alter-account-fail-container12">
-            <form action="alter-account.html" class="alter-account-fail-form">
+            <form th:action="@{/alter-account}" method="post" class="alter-account-fail-form">
+              <input type="hidden" th:value="${account.getId()}" name="id">
+              <input type="hidden" th:value="${sum}" name="sum">
               <button type="submit" class="alter-account-fail-button button">
                 <span>
                   <span>Назад</span>
@@ -125,7 +127,7 @@
                 </span>
               </button>
             </form>
-            <form action="show-accounts.html" class="alter-account-fail-form1">
+            <form th:action="@{/show-accounts}" class="alter-account-fail-form1">
               <button type="submit" class="alter-account-fail-button1 button">
                 <span>
                   <span>К счетам</span>

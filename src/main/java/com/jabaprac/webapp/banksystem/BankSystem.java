@@ -21,6 +21,11 @@ import java.util.List;
 public class BankSystem {
     private final EntityManager em;
 
+    public Date currentTime() {
+        long millis = System.currentTimeMillis();
+        return new Date(millis);
+    }
+
     @Autowired
     private BankSystem(@Qualifier("entityManager") EntityManager em) {
         this.em = em;
@@ -153,10 +158,7 @@ public class BankSystem {
     }
 
     public void removeAccount(Accounts account) {
-        long millis = System.currentTimeMillis();
-        Date today = new Date(millis);
-
-        account.setClose_date(today);
+        account.setClose_date(currentTime());
 
         em.getTransaction().begin();
         em.persist(account);
@@ -249,10 +251,7 @@ public class BankSystem {
         account.setClient(clientById(conf.getClientNo()));
         account.setType(accountTypeById(conf.getAccountType()));
 
-        long millis = System.currentTimeMillis();
-        Date today = new Date(millis);
-
-        account.setOpen_date(today);
+        account.setOpen_date(currentTime());
         account.setClose_date(null);
 
         em.getTransaction().begin();
@@ -268,6 +267,45 @@ public class BankSystem {
 
         if(account.getClose_date() != null)
             return "Счёт уже закрыт";
+
+        return null;
+    }
+
+    public String performTransaction(Accounts account, Long sum) {
+        if(account == null)
+            return "неопределённый счёт";
+
+        if(sum == null || sum == 0)
+            return "неопределённая сумма";
+
+        if(account.getClose_date() != null)
+            return "счёт закрыт";
+
+        Account_types type = account.getType();
+
+        if(sum > 0) {
+            if(!type.isAllow_refill())
+                return "счёт закрыт для пополнений";
+        } else {
+            if(!type.isAllow_write_off())
+                return "счёт закрыт для снятий";
+        }
+
+        if(type.getCredit_limit() > account.getBalance() + sum)
+            return "недостаточно средств или выход за пределы кредитного лимита";
+
+        em.getTransaction().begin();
+
+        account.setBalance(account.getBalance() + sum);
+
+        History hist = new History();
+        hist.setAccount(account);
+        hist.setDate(currentTime());
+        hist.setSum(sum);
+
+        em.persist(hist);
+        em.persist(account);
+        em.getTransaction().commit();
 
         return null;
     }

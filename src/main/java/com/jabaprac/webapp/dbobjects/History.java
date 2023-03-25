@@ -5,11 +5,18 @@ import org.hibernate.mapping.Set;
 
 import java.sql.Date;
 
+import static jakarta.persistence.GenerationType.SEQUENCE;
+
 @Entity(name = "History")
 @Table(name = "\"History\"")
 public class History {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = SEQUENCE, generator = "hst-id-gen")
+    @SequenceGenerator(
+            name = "hst-id-gen",
+            sequenceName = "\"History_id_seq\"",
+            allocationSize = 1
+    )
     @Column(name="id")
     private Long id;
 
@@ -18,7 +25,7 @@ public class History {
     private Accounts account;
 
     @Column(name="sum")
-    private int sum;
+    private Long sum;
 
     @Column(name="date")
     private Date date;
@@ -49,11 +56,11 @@ public class History {
         this.account = account;
     }
 
-    public int getSum() {
+    public Long getSum() {
         return sum;
     }
 
-    public void setSum(int sum) {
+    public void setSum(Long sum) {
         this.sum = sum;
     }
 
