@@ -2,11 +2,18 @@ package com.jabaprac.webapp.dbobjects;
 
 import jakarta.persistence.*;
 
+import static jakarta.persistence.GenerationType.SEQUENCE;
+
 @Entity(name = "Branches")
 @Table(name = "\"Branches\"")
 public class Branches {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = SEQUENCE, generator = "brn-id-gen")
+    @SequenceGenerator(
+            name = "brn-id-gen",
+            sequenceName = "\"Branches_id_seq\"",
+            allocationSize = 1
+    )
     private Long id;
 
     @Column(name="name")

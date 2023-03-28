@@ -554,6 +554,54 @@ public class MainController {
         return "show-deps";
 //        return "print_configuration";
     }
+
+    @GetMapping("/add-dep")
+    public String addBranchGet(Model mod) {
+        BranchConfiguration defaultConf = new BranchConfiguration();
+
+        mod.addAttribute("pageConf", defaultConf);
+        return "add-dep";
+    }
+
+    @PostMapping("/add-dep")
+    public String addBranchPost(@ModelAttribute(name="pageConf") BranchConfiguration conf, Model mod) {
+        mod.addAttribute("pageConf", conf);
+
+        return "add-dep";
+    }
+
+    @PostMapping("/try-add-dep")
+    public String tryAddClientPost(@ModelAttribute(name="pageConf") BranchConfiguration conf, Model mod) {
+        boolean errorOccured = false;
+        Branches added = null;
+
+        String err = conf.verify();
+        errorOccured = err != null;
+
+        if(!errorOccured) {
+            try {
+                added = bank.persistBranch(conf);
+                if(added == null) {
+                    errorOccured = true;
+                    err = "Undefined error on saving client info";
+                }
+            } catch (Exception e) {
+                errorOccured = true;
+                err = e.getMessage();
+            }
+        }
+
+        if(errorOccured) {
+            mod.addAttribute("pageConf", conf);
+            mod.addAttribute("ErrorMessage", err);
+
+            return "add-dep-fail";
+        } else {
+            mod.addAttribute("branch", added);
+
+            return "add-dep-success";
+        }
+    }
     
 
 }

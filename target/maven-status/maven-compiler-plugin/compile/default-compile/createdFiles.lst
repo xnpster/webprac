@@ -10,6 +10,7 @@ com/jabaprac/webapp/pageconf/AccountConfiguration.class
 com/jabaprac/webapp/TransactionManagerTest.class
 com/jabaprac/webapp/MainController.class
 com/jabaprac/webapp/dbobjects/History.class
+com/jabaprac/webapp/pageconf/BranchConfiguration.class
 com/jabaprac/webapp/dbobjects/Account_types_.class
 com/jabaprac/webapp/dbobjects/Clients_.class
 com/jabaprac/webapp/pageconf/ClientType.class

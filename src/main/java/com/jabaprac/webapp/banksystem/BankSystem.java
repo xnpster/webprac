@@ -137,6 +137,19 @@ public class BankSystem {
         return client;
     }
 
+    public Branches persistBranch(BranchConfiguration conf) {
+        Branches branch = new Branches();
+        branch.setName(conf.getName());
+        branch.setCity(conf.getCity());
+        branch.setAddr(conf.getAddress());
+
+        em.getTransaction().begin();
+        em.persist(branch);
+        em.getTransaction().commit();
+
+        return branch;
+    }
+
     public Clients clientById(Long id) {
         return em.find(Clients.class, id);
     }

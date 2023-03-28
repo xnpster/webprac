@@ -107,7 +107,7 @@
             </div>
           </div>
           <div class="show-deps-container020">
-            <form action="add-dep.html" class="show-deps-form">
+            <form th:action="@{/add-dep}" method="get" class="show-deps-form">
               <button class="show-deps-button button">+</button>
             </form>
             <form id="filter" th:action="@{/show-deps}" method="post" class="show-deps-form01">
