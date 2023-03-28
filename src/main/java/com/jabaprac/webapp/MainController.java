@@ -525,6 +525,35 @@ public class MainController {
             return "alter-account-success";
         }
     }
+
+    @GetMapping("/show-deps")
+    public String showDeparturesGet(Model mod) {
+        FindDepartureConfiguration defaultConf = new FindDepartureConfiguration();
+        List<Branches> foundBranches = bank.getBranchesList(defaultConf);
+
+        mod.addAttribute("pageConf", defaultConf);
+
+        mod.addAttribute("branchesList", foundBranches);
+
+        mod.addAttribute("bank", bank);
+
+        return "show-deps";
+    }
+
+    @PostMapping("/show-deps")
+    public String showDeparturesPost(@ModelAttribute(name="pageConf") FindDepartureConfiguration conf, Model mod) {
+        List<Branches> foundBranches = bank.getBranchesList(conf);
+
+        mod.addAttribute("pageConf", conf);
+
+        mod.addAttribute("branchesList", foundBranches);
+
+        mod.addAttribute("bank", bank);
+
+
+        return "show-deps";
+//        return "print_configuration";
+    }
     
 
 }

@@ -16,6 +16,7 @@ com/jabaprac/webapp/pageconf/ClientType.class
 com/jabaprac/webapp/pageconf/CheckboxValue.class
 com/jabaprac/webapp/TestEntity.class
 com/jabaprac/webapp/pageconf/ClientView.class
+com/jabaprac/webapp/pageconf/FindDepartureConfiguration.class
 com/jabaprac/webapp/banksystem/BankSystem.class
 com/jabaprac/webapp/pageconf/FindAccountConfiguration.class
 com/jabaprac/webapp/dbobjects/Accounts.class

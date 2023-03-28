@@ -14,8 +14,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.TreeSet;
 
 @Component("bankSystem")
 public class BankSystem {
@@ -176,7 +178,6 @@ public class BankSystem {
         return client;
     }
 
-
     public List<History> historyByAccount(Accounts account) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
 
@@ -188,6 +189,19 @@ public class BankSystem {
 
         return em.createQuery(q).getResultList();
     }
+
+    public List<History> historyByClient(Clients client) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+
+        CriteriaQuery<History> q = cb.createQuery(History.class);
+        Root<History> hist = q.from(History.class);
+
+        q.select(hist);
+        q.where(cb.equal(hist.get(History_.account).get(Accounts_.client), client.getId()));
+
+        return em.createQuery(q).getResultList();
+    }
+
     public List<Accounts> getAccountList(FindAccountConfiguration conf) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
 
@@ -308,5 +322,105 @@ public class BankSystem {
         em.getTransaction().commit();
 
         return null;
+    }
+
+    public TreeSet<String> departureCities() {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<String> q = cb.createQuery(String.class);
+
+        Root<Branches> root = q.from(Branches.class);
+        q.select(root.get(Branches_.CITY));
+
+        return new TreeSet<>(em.createQuery(q).getResultList());
+    }
+
+    public List<Branches> getBranchesList(FindDepartureConfiguration conf) {
+        boolean filled = false;
+        TreeSet<Long> ids = new TreeSet<>();
+
+        if(conf.isAllowNum() && conf.getNum() != null) {
+            Branches dep = branchById(conf.getNum());
+
+            if(dep != null)
+                ids.add(dep.getId());
+
+            filled = true;
+        }
+
+        if(conf.isAllowAccount() && conf.getAccount() != null) {
+            if(!(filled && ids.size() == 0)) {
+                Accounts acc = accountById(conf.getAccount());
+
+                if(acc != null) {
+                    Long branch = acc.getBranch().getId();
+
+                    if(filled) {
+                        TreeSet<Long> toIntersect = new TreeSet<>();
+                        toIntersect.add(branch);
+                        ids.retainAll(toIntersect);
+                    } else {
+                        ids.add(branch);
+                    }
+                } else {
+                    ids.clear();
+                }
+            }
+
+            filled = true;
+        }
+
+        if(conf.isAllowClient() && conf.getClient() != null) {
+            if(!(filled && ids.size() == 0)) {
+                Clients cli = clientById(conf.getClient());
+
+                if(cli != null) {
+                    List<History> hist= historyByClient(cli);
+
+                    LinkedList<Long> good = new LinkedList<>();
+                    for(History e : hist) {
+                        good.add(e.getAccount().getBranch().getId());
+                    }
+
+                    if(filled) {
+                        ids.retainAll(good);
+                    } else {
+                        ids.addAll(good);
+                    }
+                } else {
+                    ids.clear();
+                }
+            }
+
+            filled = true;
+        }
+
+        if(conf.isAllowCities() && conf.getCities() != null) {
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+
+            CriteriaQuery<Branches> q = cb.createQuery(Branches.class);
+            Root<Branches> branches = q.from(Branches.class);
+
+            q.select(branches);
+            q.where(branches.get(Branches_.city).in(conf.getCities()));
+
+            LinkedList<Long> toIntersect = new LinkedList<>();
+
+            for(Branches br : new LinkedList<>(em.createQuery(q).getResultList())) {
+                toIntersect.add(br.getId());
+            }
+            if(filled) {
+                ids.retainAll(toIntersect);
+            } else {
+                ids.addAll(toIntersect);
+                filled = true;
+            }
+        }
+
+        LinkedList<Branches> res = new LinkedList<>();
+        for(Long e : ids) {
+            res.add(branchById(e));
+        }
+
+        return res;
     }
 }
