@@ -636,4 +636,49 @@ public class MainController {
         }
     }
 
+    @GetMapping("/alter-dep")
+    public String alterBranchGet(Long id, Model mod) {
+        Branches branch = bank.branchById(id);
+        BranchConfiguration conf = new BranchConfiguration(branch);
+
+        mod.addAttribute("pageConf", conf);
+        mod.addAttribute("id", id);
+
+        return "alter-dep";
+    }
+
+
+    @PostMapping("/try-alter-dep")
+    public String tryAlterDep(@ModelAttribute BranchConfiguration conf, @RequestParam Long id, Model mod) {
+        boolean errorOccured = false;
+        Branches altered = null;
+
+        String err = conf.verify();
+        errorOccured = err != null;
+
+        if(!errorOccured) {
+            try {
+                altered = bank.updateBranch(id, conf);
+                if(altered == null) {
+                    errorOccured = true;
+                    err = "Undefined error on altering branch info";
+                }
+            } catch (Exception e) {
+                errorOccured = true;
+                err = e.getMessage();
+            }
+        }
+
+        if(errorOccured) {
+            mod.addAttribute("pageConf", conf);
+            mod.addAttribute("errorMessage", err);
+            mod.addAttribute("id", id);
+
+            return "alter-dep-fail";
+        } else {
+            mod.addAttribute("branch", altered);
+
+            return "alter-dep-success";
+        }
+    }
 }

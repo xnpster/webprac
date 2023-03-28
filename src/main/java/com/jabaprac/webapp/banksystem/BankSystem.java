@@ -459,4 +459,15 @@ public class BankSystem {
     public String verifyBranchToClose(Branches branch) {
         return null;
     }
+
+    public Branches updateBranch(Long id, BranchConfiguration conf) {
+        Branches branch = branchById(id);
+        conf.updateBranch(branch);
+
+        em.getTransaction().begin();
+        em.merge(branch);
+        em.getTransaction().commit();
+
+        return branch;
+    }
 }

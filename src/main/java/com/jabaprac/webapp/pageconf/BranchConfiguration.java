@@ -1,5 +1,7 @@
 package com.jabaprac.webapp.pageconf;
 
+import com.jabaprac.webapp.dbobjects.Branches;
+
 public class BranchConfiguration extends PageConfiguration{
     String name, city, address;
 
@@ -14,6 +16,10 @@ public class BranchConfiguration extends PageConfiguration{
         this.name = name;
         this.city = city;
         this.address = address;
+    }
+
+    public BranchConfiguration(Branches branch) {
+        this(branch.getName(), branch.getCity(), branch.getAddr());
     }
 
     public BranchConfiguration() {
@@ -56,5 +62,11 @@ public class BranchConfiguration extends PageConfiguration{
 
 //        return "Some error";
         return null;
+    }
+
+    public void updateBranch(Branches branch) {
+        branch.setName(getName());
+        branch.setCity(getCity());
+        branch.setAddr(getAddress());
     }
 }
