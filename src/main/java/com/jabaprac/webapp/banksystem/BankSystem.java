@@ -180,6 +180,12 @@ public class BankSystem {
         em.getTransaction().commit();
     }
 
+    public void removeBranch(Branches branch) {
+        em.getTransaction().begin();
+        em.remove(branch);
+        em.getTransaction().commit();
+    }
+
     public Clients updateClient(Long id, ClientConfiguration conf) {
         Clients client = clientById(id);
         conf.updateClient(client);
@@ -429,11 +435,28 @@ public class BankSystem {
             }
         }
 
-        LinkedList<Branches> res = new LinkedList<>();
-        for(Long e : ids) {
-            res.add(branchById(e));
+
+        LinkedList<Branches> res;
+        if(filled) {
+            res = new LinkedList<>();
+            for(Long e : ids) {
+                res.add(branchById(e));
+            }
+        } else {
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+
+            CriteriaQuery<Branches> q = cb.createQuery(Branches.class);
+            Root<Branches> branches = q.from(Branches.class);
+
+            q.select(branches);
+
+            res = new LinkedList<>(em.createQuery(q).getResultList());
         }
 
         return res;
+    }
+
+    public String verifyBranchToClose(Branches branch) {
+        return null;
     }
 }

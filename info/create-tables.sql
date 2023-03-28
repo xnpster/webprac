@@ -40,7 +40,8 @@ CREATE TABLE "Accounts" (
         ON DELETE CASCADE,
   CONSTRAINT "FK_Accounts.branch_id"
     FOREIGN KEY ("branch_id")
-      REFERENCES "Branches"("id"),
+      REFERENCES "Branches"("id")
+        ON DELETE CASCADE,
   CONSTRAINT "FK_Accounts.type_id"
     FOREIGN KEY ("type_id")
       REFERENCES "Account_types"("id")

@@ -602,6 +602,38 @@ public class MainController {
             return "add-dep-success";
         }
     }
-    
+
+    @GetMapping("/del-dep")
+    public String delBranchGet(Long id, Model mod) {
+        Branches branch = bank.branchById(id);
+
+        mod.addAttribute("branch", branch);
+        return "del-dep";
+    }
+
+    @PostMapping("/try-del-dep")
+    public String tryDelBranchPost(Long id, Model mod) {
+        Branches branch = bank.branchById(id);
+        mod.addAttribute("branch", branch);
+
+        String errMsg = bank.verifyBranchToClose(branch);
+        boolean errorOccurred = (errMsg != null);
+
+        if(!errorOccurred) {
+            try {
+                bank.removeBranch(branch);
+            } catch (Exception e) {
+                errorOccurred = true;
+                errMsg = e.getMessage();
+            }
+        }
+
+        if(errorOccurred) {
+            mod.addAttribute("errorMessage", errMsg);
+            return "del-dep-fail";
+        } else {
+            return "del-dep-success";
+        }
+    }
 
 }
