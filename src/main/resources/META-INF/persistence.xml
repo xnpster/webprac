@@ -43,20 +43,22 @@
         <class>com.jabaprac.webapp.dbobjects.Accounts</class>
 
         <properties>
-            <property name="javax.persistence.jdbc.driver"
+            <property name="jakarta.persistence.jdbc.driver"
                       value="org.postgresql.Driver" />
 
-            <property name="javax.persistence.jdbc.url"
+            <property name="jakarta.persistence.jdbc.url"
                       value="jdbc:postgresql://localhost:5432/webprac" />
 
-            <property name="javax.persistence.jdbc.user"
+            <property name="jakarta.persistence.jdbc.user"
                       value="postgres" />
 
-            <property name="javax.persistence.jdbc.password"
+            <property name="jakarta.persistence.jdbc.password"
                       value="posgr332" />
 
             <property name="hibernate.show_sql"
                       value="true" />
+
+            <property name="hibernate.connection.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
         </properties>
     </persistence-unit>
 

@@ -2,6 +2,8 @@ package com.jabaprac.webapp.dbobjects;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
 @Entity(name = "Clients")
@@ -99,5 +101,27 @@ public class Clients {
         this.email = email;
         this.phone = phone;
         this.is_phy = is_phy;
+    }
+
+    public Clients(Long id, String name, String addr, String email, String phone, boolean is_phy) {
+        this.id = id;
+        this.name = name;
+        this.addr = addr;
+        this.email = email;
+        this.phone = phone;
+        this.is_phy = is_phy;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Clients clients = (Clients) o;
+        return is_phy == clients.is_phy && Objects.equals(id, clients.id) && Objects.equals(name, clients.name) && Objects.equals(addr, clients.addr) && Objects.equals(email, clients.email) && Objects.equals(phone, clients.phone);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, addr, email, phone, is_phy);
     }
 }

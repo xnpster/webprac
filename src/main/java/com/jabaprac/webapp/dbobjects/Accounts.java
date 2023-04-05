@@ -3,6 +3,7 @@ package com.jabaprac.webapp.dbobjects;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.Objects;
 
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
@@ -110,4 +111,27 @@ public class Accounts {
     }
 
     public Accounts() { }
+
+    public Accounts(Long id, Branches branch, Clients client, Account_types type, Long balance, Date open_date, Date close_date) {
+        this.id = id;
+        this.branch = branch;
+        this.client = client;
+        this.type = type;
+        this.balance = balance;
+        this.open_date = open_date;
+        this.close_date = close_date;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Accounts accounts = (Accounts) o;
+        return Objects.equals(id, accounts.id) && Objects.equals(branch, accounts.branch) && Objects.equals(client, accounts.client) && Objects.equals(type, accounts.type) && Objects.equals(balance, accounts.balance) && Objects.equals(open_date, accounts.open_date) && Objects.equals(close_date, accounts.close_date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, branch, client, type, balance, open_date, close_date);
+    }
 }

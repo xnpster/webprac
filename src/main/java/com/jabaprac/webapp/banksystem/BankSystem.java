@@ -4,7 +4,6 @@ import com.jabaprac.webapp.dbobjects.*;
 
 import com.jabaprac.webapp.pageconf.*;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
@@ -14,7 +13,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.TreeSet;
@@ -172,11 +170,22 @@ public class BankSystem {
         em.getTransaction().commit();
     }
 
-    public void removeAccount(Accounts account) {
+    public void closeAccount(Accounts account) {
         account.setClose_date(currentTime());
 
         em.getTransaction().begin();
         em.persist(account);
+        em.getTransaction().commit();
+    }
+    public void removeAccount(Accounts account) {
+        em.getTransaction().begin();
+        em.remove(account);
+        em.getTransaction().commit();
+    }
+
+    public void removeHistory(History hist) {
+        em.getTransaction().begin();
+        em.remove(hist);
         em.getTransaction().commit();
     }
 
@@ -243,8 +252,8 @@ public class BankSystem {
             resultPred = resultPred == null ? pred : cb.and(resultPred, pred);
         }
 
-        boolean checkDepositRange = conf.isAllowDepositDateRange() && conf.getDepositStartDate() != null;
-        boolean checkWithdrawRange = conf.isAllowWithdrawDateRange() && conf.getWithdrawStartDate() != null;
+        boolean checkDepositRange = conf.isAllowDepositDateRange();
+        boolean checkWithdrawRange = conf.isAllowWithdrawDateRange();
 
         if(resultPred != null)
             q.where(resultPred);
@@ -260,11 +269,11 @@ public class BankSystem {
             boolean depositCond = !checkDepositRange, withdrawCond = !checkWithdrawRange;
             for (History hist : history) {
                 if (!depositCond && hist.getSum() > 0)
-                    depositCond = hist.getDate().after(conf.getDepositStartDate()) && (conf.getDepositEndDate() == null
+                    depositCond = (conf.getDepositStartDate() == null || hist.getDate().after(conf.getDepositStartDate())) && (conf.getDepositEndDate() == null
                             || hist.getDate().before(conf.getDepositEndDate()));
 
                 if (!withdrawCond && hist.getSum() < 0)
-                    withdrawCond = hist.getDate().after(conf.getWithdrawStartDate()) && (conf.getWithdrawEndDate() == null
+                    withdrawCond = (conf.getWithdrawStartDate() == null || hist.getDate().after(conf.getWithdrawStartDate())) && (conf.getWithdrawEndDate() == null
                             || hist.getDate().before(conf.getWithdrawEndDate()));
             }
 
@@ -435,23 +444,16 @@ public class BankSystem {
             }
         }
 
-
         LinkedList<Branches> res;
-        if(filled) {
-            res = new LinkedList<>();
-            for(Long e : ids) {
-                res.add(branchById(e));
-            }
-        } else {
-            CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Branches> q = cb.createQuery(Branches.class);
+        Root<Branches> branches = q.from(Branches.class);
 
-            CriteriaQuery<Branches> q = cb.createQuery(Branches.class);
-            Root<Branches> branches = q.from(Branches.class);
+        if(filled)
+            q.where(branches.get("id").in(ids));
 
-            q.select(branches);
-
-            res = new LinkedList<>(em.createQuery(q).getResultList());
-        }
+        q.select(branches);
+        res = new LinkedList<>(em.createQuery(q).getResultList());
 
         return res;
     }

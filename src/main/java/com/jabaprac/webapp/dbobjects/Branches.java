@@ -2,6 +2,8 @@ package com.jabaprac.webapp.dbobjects;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
 @Entity(name = "Branches")
@@ -26,6 +28,13 @@ public class Branches {
     private String city;
 
     public Branches() { }
+
+    public Branches(Long id, String name, String addr, String city) {
+        this.id = id;
+        this.name = name;
+        this.addr = addr;
+        this.city = city;
+    }
 
     public String toString() {
         return "[Отделение '" + name +
@@ -65,5 +74,18 @@ public class Branches {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Branches branches = (Branches) o;
+        return Objects.equals(id, branches.id) && Objects.equals(name, branches.name) && Objects.equals(addr, branches.addr) && Objects.equals(city, branches.city);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, addr, city);
     }
 }

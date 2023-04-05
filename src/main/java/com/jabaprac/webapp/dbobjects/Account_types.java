@@ -2,6 +2,8 @@ package com.jabaprac.webapp.dbobjects;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity(name = "Account_types")
 @Table(name = "\"Account_types\"")
 public class Account_types {
@@ -73,5 +75,26 @@ public class Account_types {
         this.allow_write_off = allow_write_off;
     }
 
+    public Account_types(Long id, String name, int credit_limit, boolean allow_refill, boolean allow_write_off) {
+        this.id = id;
+        this.name = name;
+        this.credit_limit = credit_limit;
+        this.allow_refill = allow_refill;
+        this.allow_write_off = allow_write_off;
+    }
+
     public Account_types() { }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account_types that = (Account_types) o;
+        return credit_limit == that.credit_limit && allow_refill == that.allow_refill && allow_write_off == that.allow_write_off && Objects.equals(id, that.id) && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, credit_limit, allow_refill, allow_write_off);
+    }
 }

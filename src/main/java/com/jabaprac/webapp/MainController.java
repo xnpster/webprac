@@ -25,62 +25,16 @@ import java.util.List;
 
 @Controller
 public class MainController {
-
-
     @Qualifier("bankSystem")
     @Autowired
     private BankSystem bank;
-    private LinkedList<String> strings = new LinkedList<>();
-    private String singleString;
 
     private EntityManager em;
-
-    public EntityManager getEm() {
-        return em;
-    }
 
     @Qualifier("entityManager")
     @Autowired
     public void setEm(EntityManager em) {
         this.em = em;
-    }
-
-    public TestBean getTb() {
-        return tb;
-    }
-
-    @Qualifier("testBean")
-    @Autowired
-    public void setTb(TestBean tb) {
-        this.tb = tb;
-    }
-
-    private TestBean tb;
-    public List<String> getStrings() {
-        return strings;
-    }
-
-    public void setStrings(LinkedList<String> strings) {
-        this.strings = strings;
-    }
-
-    public String getSingleString() {
-        return singleString;
-    }
-
-    @Value("one single string")
-    public void setSingleString(String singleString) {
-        this.singleString = singleString;
-    }
-
-    @ModelAttribute("singleStr")
-    public String sS() {
-        return getSingleString();
-    }
-
-    @ModelAttribute("stringArr")
-    public List<String> stringArr() {
-        return strings;
     }
 
     @InitBinder
@@ -476,7 +430,7 @@ public class MainController {
 
         if(!errorOccurred) {
             try {
-                bank.removeAccount(account);
+                bank.closeAccount(account);
             } catch (Exception e) {
                 errorOccurred = true;
                 errMsg = "Ошибка при удалении данных из базы";

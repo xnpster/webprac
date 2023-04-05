@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.mapping.Set;
 
 import java.sql.Date;
+import java.util.Objects;
 
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
@@ -73,4 +74,17 @@ public class History {
     }
 
     public History() { }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        History history = (History) o;
+        return Objects.equals(id, history.id) && Objects.equals(account, history.account) && Objects.equals(sum, history.sum) && Objects.equals(date, history.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, account, sum, date);
+    }
 }
